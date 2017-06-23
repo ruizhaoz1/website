@@ -1,0 +1,291 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../bower_components/app-localize-behavior/app-localize-behavior.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
+<link rel="import" href="default-page.html">
+<link rel="import" href="team-page.html">
+<link rel="import" href="ico-page.html">
+<link rel="import" href="faq-page.html">
+<link rel="import" href="blog-page.html">
+<link rel="import" href="common-footer.html">
+<link rel="import" href="inpage-section.html">
+<link rel="import" href="master-piece.html">
+<link rel="import" href="member-card.html">
+<dom-module id="the-app">
+  <template>
+    <style>
+    :host {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    
+    app-header {
+      background-color: white;
+    }
+    
+    app-header:not([shadow]) {
+      /*border-bottom: 1px solid #ddd;*/
+    }
+    
+    app-drawer {
+      --app-drawer-content-container: {
+        background-color: #f3f3f3;
+      }
+      ;
+    }
+    
+    iron-pages {
+      @apply(--layout-flex);
+    }
+    
+    #mainToolbar {
+      height: 110px;
+    }
+    
+    paper-icon-button {
+      color: #000;
+      --paper-icon-button-ink-color: #31f0ef;
+    }
+    
+    .navItem {
+      @apply --layout-self-start;
+      margin-top: 13px;
+      width: 88px;
+    }
+    
+    .spacer {
+      @apply --layout;
+      @apply --layout-flex-auto;
+      @apply --layout-center-center;
+    }
+    
+    .logo {
+      width: 120px;
+      height: 40px;
+      background-size: 100% 100%;
+    }
+    
+    .leftItem [icon] {
+      display: none;
+    }
+    /*    :host([routeData.page=blog]) #mainToolbar {
+      height: 164px;
+    }*/
+    
+    paper-tabs {
+      --paper-tabs-selection-bar-color: #31f0ef;
+      margin-left: -55px;
+      color: #31f0ef;
+      font-size: 13px;
+    }
+    
+    paper-tab {
+      @apply --layout-flex-none;
+      padding: 0;
+      --paper-tab-ink: #31f0ef;
+    }
+    
+    paper-tab a {
+      @apply --layout-horizontal;
+      @apply --layout-center-center;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #7c7c7c;
+      font-weight: 500;
+      padding: 0 20px;
+      height: 100%;
+    }
+    
+    .list {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    
+    .list a {
+      display: block;
+      line-height: 40px;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #7c7c7c;
+    }
+    
+    .list a.active {
+      color: black;
+      font-weight: bold;
+    }
+    
+    .profileBar {
+      margin-bottom: 40px;
+    }
+    
+    .profilePic {
+      border-radius: 50% 50%;
+    }
+    
+    .profileName {
+      @apply --layout-flex;
+      margin-left: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #0a3142;
+    }
+    
+    [icon=settings] {
+      width: 35px;
+      height: 35px;
+      color: #0a3142;
+    }
+    
+    @media (max-width: 1200px) {
+      .logo {
+        width: 89px;
+        height: 17px;
+      }
+      #mainToolbar {
+        height: 64px;
+      }
+      shrine-detail {
+        height: auto;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .leftItem [icon=menu] {
+        display: block;
+      }
+      paper-tabs {
+        display: none;
+      }
+    }
+    </style>
+    <!-- routing -->
+    <app-location route="{{route}}" use-hash-as-path></app-location>
+    <app-route route="{{route}}" pattern=":page" data="{{routeData}}" tail="{{subRoute}}"></app-route>
+    <!-- media query -->
+    <iron-media-query query="max-width: 400px" query-matches="{{smallScreen}}"></iron-media-query>
+    <!--data loading -->
+    <iron-ajax url="data/{{language}}/locales.json" auto last-response="{{locales}}"></iron-ajax>
+    <iron-ajax url="//raw.githubusercontent.com/Loopring/blogs/master/ico.json" auto last-response="{{ico}}"></iron-ajax>
+    <!-- UI -->
+    <app-drawer-layout drawer-width="288px" force-narrow>
+      <!-- navigation drawer for small screen sizes -->
+      <app-drawer slot="drawer" id="drawer" swipe-open="[[smallScreen]]">
+        <template is="dom-if" if="[[smallScreen]]">
+          <app-toolbar class="profileBar">
+            <img class="profilePic" src="//app-layout-assets.appspot.com/assets/shrine/profile_pic.jpg" width="30" height="30">
+            <div class="profileName">Stella</div>
+            <paper-icon-button icon="settings" aria-label="[[locales.alt.settings]]"></paper-icon-button>
+          </app-toolbar>
+          <div class="list">
+            <a href="#default">[[locales.tabs.default]]</a>
+            <a href="#team">[[locales.tabs.team]]</a>
+            <a href="#ico">[[locales.tabs.ico]]</a>
+            <a href="#faq">[[locales.tabs.faq]]</a>
+            <a href="#blog">[[locales.tabs.blog]]</a>
+          </div>
+        </template>
+      </app-drawer>
+      <app-header-layout id="headerLayout">
+        <!-- main header -->
+        <app-header slot="header" effects="waterfall" condenses="[[!smallScreen]]">
+          <app-toolbar id="mainToolbar">
+            <div class="navItem leftItem">
+              <paper-icon-button icon="menu" drawer-toggle alt="[[locales.alt.toogle_navigation_menu]]"></paper-icon-button>
+              <a href="#[[sectionData.section]]" tabindex="-1">
+                <paper-icon-button icon="arrow-back" alt="[[locales.alt.back_to_home]]"></paper-icon-button>
+              </a>
+            </div>
+            <div class="spacer">
+              <img src="//app-layout-assets.appspot.com/assets/shrine/shrine_logo.svg" class="logo" alt="SHRINE">
+            </div>
+            <div class="navItem">
+              <!-- <paper-icon-button icon="shopping-cart" aria-label="Shopping cart"></paper-icon-button> -->
+              <!-- <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button> -->
+            </div>
+          </app-toolbar>
+          <paper-tabs selected="{{routeData.page}}" scrollable sticky>
+            <paper-tab name="default"> <a href="#default">[[locales.tabs.default]]</a></paper-tab>
+            <paper-tab name="team"> <a href="#team">[[locales.tabs.team]]</a></paper-tab>
+            <paper-tab name="ico"> <a href="#ico">[[locales.tabs.ico]]</a></paper-tab>
+            <paper-tab name="faq"> <a href="#faq">[[locales.tabs.faq]]</a></paper-tab>
+            <paper-tab name="blog"> <a href="#blog">[[locales.tabs.blog]]</a></paper-tab>
+            </paper-tab>
+          </paper-tabs>
+        </app-header>
+        <iron-pages selected="[[routeData.page]]" attr-for-selected="name" vertical self-flex center layout>
+          <default-page name="default" language="{{language}}" locales="{{locales}}" ico="{{ico}}"></default-page>
+          <team-page name="team" language="{{language}}" locales="{{locales}}"></team-page>
+          <ico-page name="ico" language="{{language}}" locales="{{locales}}" ico="{{ico}}"></ico-page>
+          <faq-page name="faq" language="{{language}}" locales="{{locales}}"></faq-page>
+          <blog-page name="blog" language="{{language}}" locales="{{locales}}"></blog-page>
+        </iron-pages>
+      </app-header-layout>
+    </app-drawer-layout>
+  </template>
+  <script>
+  Polymer({
+    is: 'the-app',
+
+    behaviors: [
+      Polymer.AppLocalizeBehavior
+    ],
+
+    properties: {
+      page: {
+        type: String,
+        value: 'default'
+      },
+
+      route: Object,
+      locales: Object,
+      ico: Object,
+
+      language: {
+        value: 'zh'
+      },
+    },
+
+    observers: [
+      '_hashDidChange(route.path)'
+    ],
+
+    attached: function() {
+      // this.loadResources(this.resolveUrl('../data/locales.json'));
+      this.async(function() {
+        if (!this.route.path) {
+          this.set('route.path', 'default');
+        }
+      });
+    },
+
+    _hashDidChange: function() {
+      Polymer.AppLayout.scroll({
+        top: 0,
+        behavior: 'silent'
+      });
+      this.$.headerLayout.resetLayout();
+      this.$.drawer.close();
+    }
+  });
+  </script>
+  </do m-module>

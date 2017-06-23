@@ -1,0 +1,88 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="team-page">
+  <template>
+    <style include="iron-flex iron-flex-alignment app-grid-style">
+      :host {
+      display: block;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    
+    inpage-section {
+      min-height: 200px;
+    }
+    
+    .cofounders,
+    .developers {
+      --app-grid-columns: 3;
+      --app-grid-gutter: 32px;
+      background-color: black;
+    }
+    
+    .cofounders {
+      background-color: white;
+    }
+    
+    .developers {
+      background-color: var(--google-blue-300);
+    }
+    
+    .advisors {
+      background-color: var(--google-red-300);
+    }
+    
+    @media (max-width: 1200px) {
+      .cofounders,
+      .developers {
+        --app-grid-columns: 3;
+        --app-grid-gutter: 16px;
+      }
+      @media (max-width: 400px) {
+        .cofounders,
+        .developers {
+          --app-grid-columns: 1;
+          --app-grid-gutter: 0;
+        }
+      }
+    </style>
+    <iron-ajax url="data/{{language}}/team.json" auto last-response="{{team}}"></iron-ajax>
+    <inpage-section class="cofounders">
+    <div class="section-head">发起人</div>
+      <div class="app-grid">
+        <template is="dom-repeat" items={{team.cofounders}} as=member>
+          <member-card flex member="{{member}}"></member-card>
+        </template>
+      </div>
+    </inpage-section>
+    <inpage-section class="developers">
+    <div class="section-head">开发者</div>
+      <div class="app-grid">
+        <template is="dom-repeat" items={{team.developers}} as=member>
+          <member-card flex member="{{member}}"></member-card>
+        </template>
+      </div>
+    </inpage-section>
+    <inpage-section class="advisors">abc</inpage-section>
+    <common-footer></common-footer>
+  </template>
+  <script>
+  Polymer({
+    is: 'team-page',
+    properties: {
+      // item: {
+      //   type: Object,
+      //   observer: '_itemChanged'
+      // },
+      language: {
+        type: String
+      }
+      // relatedItems: {
+      //   type: Array
+      // }
+    }
+    // _itemChanged: function(item) {
+    //   this.$.img.src = '';
+    //   this.$.img.src = item.imageUrl;
+    // }
+  });
+  </script>
+</dom-module>

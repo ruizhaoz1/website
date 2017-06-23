@@ -1,0 +1,14 @@
+{
+    "tabs": {
+        "default": "Loopring协议",
+        "team": "团队",
+        "faq": "常见问题",
+        "blog": "博客",
+        "ico": "ICO"
+    },
+    "alt": {
+        "toogle_navigation_menu": "toogle_navigation_menu",
+        "back_to_home": "Back to Home",
+        "settings": "Settings"
+    }
+}
