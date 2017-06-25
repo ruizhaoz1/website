@@ -17,7 +17,13 @@
       linear-gradient(rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.3)), /*layer*/
       url(/images/sample2.jpg);
       background-size: cover;
-      min-height: 480px;
+      color: var(--text-primary-color);
+      font-size: 64px;
+    }
+    
+    .title {
+      padding-top: 100px;
+      padding-right: 200px;
     }
     
     .blog {
@@ -28,10 +34,19 @@
     .markdown {
       background: lightgrey;
     }
+    
+    @media (min-width: 400px) {}
+    
+    @media (min-width: 1200px) {
+      .title {
+        padding-top: 200px;
+        padding-right: 300px;
+      }
+    }
     </style>
     <iron-ajax url="//raw.githubusercontent.com/Loopring/blogs/master/{{language}}/entries.json" auto last-response="{{entries}}"></iron-ajax>
     <inpage-section class="masthead">
-      博客
+      <div class="title">博客</div>
     </inpage-section>
     <div class="container vertical layout">
       <template is="dom-repeat" items={{entries}} as=entry index-as=index>
