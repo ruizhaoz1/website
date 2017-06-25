@@ -2,66 +2,140 @@
 <dom-module id="team-page">
   <template>
     <style include="iron-flex iron-flex-alignment app-grid-style">
-      :host {
+    :host {
       display: block;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
     
     inpage-section {
-      min-height: 200px;
+      /*min-height: 90vh;*/
+    }
+    
+    .masthead {
+      background: url(/images/yellow-cover.svg), /*layer*/
+      linear-gradient(rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.3)), /*layer*/
+      url(/images/sample2.jpg);
+      background-size: cover;
+      color: var(--text-primary-color);
+      font-size: 64px;
+    }
+    
+    .title {
+      padding-top: 100px;
+      padding-right: 200px;
     }
     
     .cofounders,
-    .developers {
-      --app-grid-columns: 3;
+    .developers,
+    .section {
+      --app-grid-columns: 4;
       --app-grid-gutter: 32px;
-      background-color: black;
+      /*min-height: 90vh;*/
     }
     
     .cofounders {
       background-color: white;
     }
     
-    .developers {
-      background-color: var(--google-blue-300);
+    .developers,
+    .advisors2 {
+      background-color: #73e8ff;
     }
     
     .advisors {
-      background-color: var(--google-red-300);
+      background-color: #29b6f6;
+      color: white;
     }
     
-    @media (max-width: 1200px) {
-      .cofounders,
-      .developers {
-        --app-grid-columns: 3;
-        --app-grid-gutter: 16px;
+    .advisors .section-head::before,
+    .advisors .section-head::after {
+      background: white;
+    }
+    
+    .section-head {
+      font-size: 32px;
+      line-height: 46px;
+      font-weight: 300;
+      text-align: center;
+      align-items: center;
+      width: 100%;
+      font-weight: 400;
+    }
+    
+    .section-head::before,
+    .section-head::after {
+      content: '';
+      width: 10%;
+      height: 2px;
+      margin: 16px;
+      background: #212121;
+    }
+    
+    .section {
+      --app-grid-columns: 1;
+      --app-grid-gutter: 9;
+    }
+    
+    @media (min-width: 400px) {
+      .section {
+        --app-grid-columns: 1;
+        --app-grid-gutter: 32px;
       }
-      @media (max-width: 400px) {
-        .cofounders,
-        .developers {
-          --app-grid-columns: 1;
-          --app-grid-gutter: 0;
-        }
+    }
+    
+    @media (min-width: 1200px) {
+      .section {
+        --app-grid-columns: 4;
+        --app-grid-gutter: 32px;
       }
+      .title {
+        padding-top: 200px;
+        padding-right: 300px;
+      }
+    }
     </style>
     <iron-ajax url="data/{{language}}/team.json" auto last-response="{{team}}"></iron-ajax>
-    <inpage-section class="cofounders">
-    <div class="section-head">发起人</div>
+    <inpage-section class="masthead section">
+      <div class="title">团队</div>
+    </inpage-section>
+    <inpage-section class="cofounders section">
+      <div class="section-head horizontal center-justified layout">
+        核心成员
+      </div>
       <div class="app-grid">
-        <template is="dom-repeat" items={{team.cofounders}} as=member>
-          <member-card flex member="{{member}}"></member-card>
+        <template is="dom-repeat" items={{team.cofounders}} as=m>
+          <member-card member="{{m}}"></member-card>
         </template>
       </div>
     </inpage-section>
-    <inpage-section class="developers">
-    <div class="section-head">开发者</div>
+    <inpage-section class="developers section">
+      <div class="section-head horizontal center-justified layout">
+        工程师和社区贡献者
+      </div>
       <div class="app-grid">
-        <template is="dom-repeat" items={{team.developers}} as=member>
-          <member-card flex member="{{member}}"></member-card>
+        <template is="dom-repeat" items={{team.developers}} as=m>
+          <member-card-small member="{{m}}"></member-card-small>
         </template>
       </div>
     </inpage-section>
-    <inpage-section class="advisors">abc</inpage-section>
+    <inpage-section class="advisors section">
+      <div class="section-head horizontal center-justified layout">首席顾问</div>
+      <div class="app-grid">
+        <template is="dom-repeat" items={{team.advisors}} as=m>
+          <member-card member="{{m}}"></member-card>
+        </template>
+      </div>
+    </inpage-section>
+    <inpage-section class="advisors2 section">
+      <div class="section-head  horizontal center-justified layout">
+        其他顾问
+      </div>
+      <div class="app-grid">
+        <template is="dom-repeat" items={{team.advisors2}} as=m>
+          <member-card-small member="{{m}}"></member-card-small>
+        </template>
+      </div>
+    </inpage-section>
     <common-footer></common-footer>
   </template>
   <script>

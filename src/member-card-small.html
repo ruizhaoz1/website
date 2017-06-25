@@ -1,21 +1,15 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<dom-module id="member-card">
+<dom-module id="member-card-small">
   <template>
     <style include="iron-flex iron-flex-alignment">
     :host {
       display: block;
       @apply(--layout-vertical);
       @apply(--layout-center-center);
-      width: 100%;
       color: var(--member-card-primary-color, --primary-text-color);
+      width: 100%;
     }
     
-    iron-image {
-      border-radius: 50%;
-      margin-bottom: 16px;
-    }
-    
-    .role,
     .desc {
       color: var(--member-card-secondary-color, --primary-text-color);
       font-weight: 200;
@@ -23,20 +17,18 @@
     }
     
     .name {
-      letter-spacing: 1em;
-      margin-right: -1em;
+      letter-spacing: 0.5em;
+      margin-right: -0.5em;
       font-size: 16px;
       padding-bottom: 16px;
     }
     </style>
-    <iron-image style="width:240px; height:240px; background-color: lightgray;" sizing="cover" preload fade src="{{member.img}}"></iron-image>
     <div class="name">{{member.name}}</div>
-    <div class="role">{{member.role}}</div>
     <div class="desc">{{member.desc}}</div>
   </template>
   <script>
   Polymer({
-    is: 'member-card',
+    is: 'member-card-small',
     properties: {
       member: {
         type: Object

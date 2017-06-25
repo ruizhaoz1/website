@@ -22,6 +22,25 @@
     }],
     "developers": [{
         "name": "王东",
+        "desc": "aaa"
+    }, {
+        "name": "周杰",
+        "desc": "aaa"
+    }, {
+        "name": "陈晓亮",
+        "desc": "aaa"
+    }, {
+        "name": "马超",
+        "desc": "aaa"
+    }, {
+        "name": "陈晓亮",
+        "desc": "aaa"
+    }, {
+        "name": "马超",
+        "desc": "aaa"
+    }],
+    "advisors": [{
+        "name": "王东",
         "role": "发起人、基金会主席",
         "desc": "aaa",
         "img": "images/default-profile.jpg"
@@ -40,5 +59,18 @@
         "role": "发起人、基金会主席",
         "desc": "aaa",
         "img": "images/default-profile.jpg"
+    }],
+    "advisors2": [{
+        "name": "王东",
+        "desc": "aaa"
+    }, {
+        "name": "周杰",
+        "desc": "aaa"
+    }, {
+        "name": "陈晓亮",
+        "desc": "aaa"
+    }, {
+        "name": "马超",
+        "desc": "发起人、基金会主席， 发起人、基金会主席， 发起人、基金会主席， 发起人、基金会主席， 发起人、基金会主席， 发起人、基金会主席"
     }]
 }

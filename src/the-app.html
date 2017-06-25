@@ -16,6 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../bower_components/app-layout/app-layout.html">
 <link rel="import" href="../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -23,6 +24,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/marked-element/marked-element.html">
+<link rel="import" href="app-theme.html">
 <link rel="import" href="default-page.html">
 <link rel="import" href="team-page.html">
 <link rel="import" href="ico-page.html">
@@ -32,8 +34,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="inpage-section.html">
 <link rel="import" href="master-piece.html">
 <link rel="import" href="member-card.html">
+<link rel="import" href="member-card-small.html">
 <dom-module id="the-app">
   <template>
+    <!-- #2979ff // blue,
+  #6200ea //purple,
+##4fc3f7 //light blue
+
+   -->
     <style>
     :host {
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -79,9 +87,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       @apply --layout-center-center;
     }
     
+    .spacer img {
+      background-color: #6200ea;
+      border-radius: 50%;
+      height: 48px;
+      width: 48px;
+      padding: 4px;
+    }
+    
     .logo {
       width: 120px;
-      height: 40px;
+      height: 36px;
       background-size: 100% 100%;
     }
     
@@ -102,18 +118,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     paper-tab {
       @apply --layout-flex-none;
       padding: 0;
-      --paper-tab-ink: #31f0ef;
+      --paper-tab-ink: white;
     }
     
     paper-tab a {
-      @apply --layout-horizontal;
-      @apply --layout-center-center;
+      font-size: 16px;
+      color: #404040;
+      width: 100%;
+      display: block;
+      padding: 8px;
       text-decoration: none;
-      text-transform: uppercase;
-      color: #7c7c7c;
-      font-weight: 500;
-      padding: 0 20px;
-      height: 100%;
     }
     
     .list {
@@ -192,7 +206,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer slot="drawer" id="drawer" swipe-open="[[smallScreen]]">
         <template is="dom-if" if="[[smallScreen]]">
           <app-toolbar class="profileBar">
-            <img class="profilePic" src="//app-layout-assets.appspot.com/assets/shrine/profile_pic.jpg" width="30" height="30">
+            <img class="profilePic" src="images/logo1.svg" width="30" height="30">
             <div class="profileName">Stella</div>
             <paper-icon-button icon="settings" aria-label="[[locales.alt.settings]]"></paper-icon-button>
           </app-toolbar>
@@ -216,7 +230,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </a>
             </div>
             <div class="spacer">
-              <img src="//app-layout-assets.appspot.com/assets/shrine/shrine_logo.svg" class="logo" alt="SHRINE">
+              <img src="images/logo2.svg" class="logo" alt="SHRINE">
             </div>
             <div class="navItem">
               <!-- <paper-icon-button icon="shopping-cart" aria-label="Shopping cart"></paper-icon-button> -->
@@ -226,9 +240,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <paper-tabs selected="{{routeData.page}}" scrollable sticky>
             <paper-tab name="default"> <a href="#default">[[locales.tabs.default]]</a></paper-tab>
             <paper-tab name="team"> <a href="#team">[[locales.tabs.team]]</a></paper-tab>
-            <paper-tab name="ico"> <a href="#ico">[[locales.tabs.ico]]</a></paper-tab>
             <paper-tab name="faq"> <a href="#faq">[[locales.tabs.faq]]</a></paper-tab>
             <paper-tab name="blog"> <a href="#blog">[[locales.tabs.blog]]</a></paper-tab>
+            <paper-tab name="ico"> <a href="#ico">[[locales.tabs.ico]]</a></paper-tab>
             </paper-tab>
           </paper-tabs>
         </app-header>

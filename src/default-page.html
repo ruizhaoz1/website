@@ -10,150 +10,39 @@
 <dom-module id="default-page">
   <template>
     <!-- <style include="iron-flex iron-flex-alignment"> -->
-    <style>
+    <style include="iron-flex iron-flex-alignment app-grid-style">
     :host {
       display: block;
       background-color: white;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       @apply(--layout-vertical);
-      min-height: 100vh;
+      /*min-height: 100vh;*/
     }
     
-    .section {
-      min-height: 260px;
-      padding: 80px 0 80px 0;
-      height: 100vh;
-      max-height: 960px;
-      min-height: 894px;
+    inpage-section {
+      min-height: 40vh;
     }
+    /*  .masthead2 {
+      background: url(/images/yellow-cover.svg), linear-gradient(rgba(79, 195, 247, 0.5), rgba(79, 195, 247, 0.5)), url(/images/team.jpg);
+      background-size: cover;
+      min-height: 480px;
+      font-size: 86px;
+      color: white;
+    }
+    */
     
-    .question {
-      min-height: 260px;
-      background-color: white;
-    }
     
-    .question .headline {
-      color: #6200ea;
-      font-family: Roboto Mono, monospace;
-      font-size: 47px;
-      line-height: 64px;
-      font-weight: 300;
-      margin: 0 0 50px;
-      padding: 0 0 26px;
-    }
+    @media (max-width: 1200px) {}
     
-    .features {
-      background: white;
-    }
-    
-    .one {
-      background: lightyellow;
-    }
-    
-    .ico.pending {
-      background-color: var(--google-blue-300);
-    }
-    
-    .ico.started {
-      background-color: var(--google-green-300);
-    }
-    
-    .ico.ended {
-      background-color: var(--google-red-300);
-    }
+    @media (max-width: 400px) {}
     </style>
-    <div class="container vertical layout">
-      <!-- <section-splash></section-splash> -->
-      <div class="question section">
-        <template is="dom-if" if="{{isEqual(language,'zh')}}">
-          <div class="headline">你是否意识到加密货币交易所的<span>各种风险</span>？<br>如何才能打造<span>零风险<span>的交易所？</div>
-          <div class="comment">社区中普遍的共识是所有中心化的加密货币存储都是有风险的，而保存用户资产的交易所更是黑客觊觎的目标。资产丢失、内密交易等绝非小概率事情！</div>
-        </template>
-        <template is="dom-if" if="{{!isEqual(language,'zh')}}">
-          <div class="headline">Did you realize the <span>risks</span> in cryptocurrency exchanges？</div>
-          <div class="headline">How to build a zero-risk exchange?</div>
-          <div class="comment">There is a general sense in the cryptocurrency community that any centralized repository is at risk. The big exchanges that hold customer deposits are a big target for hackers</div>
-        </template>
-      </div>
-      <div class="introduction section">
-        <template is="dom-if" if="{{isEqual(language,'zh')}}">
-          <div class="headline">我们的回答：Loopring协议</div>
-          <div class="comment">Loopring去中心化代币交易协议（Loopring Protocol）是在以太坊（Ethereum）上ERC20代币间进行交易的，基于智能合约（Smart Contract）的开放协议。该协议允许多家交易所通过竞争，对公共订单进行链外撮合（off-chain order-matching）及链上清结算（on-chain transactional clearing and payment)。Loopring将彻底解决现有中心化交易所模式的一些固有风险。我们期待Loopring成为去中心化交易所的底层协议和新一代虚拟资产交易所的核心基础架构。</div>
-        </template>
-        <template is="dom-if" if="{{!isEqual(language,'zh')}}">
-          <div class="headline">Introducting Loopring</div>
-          <div class="comment">There is a general sense in the cryptocurrency community that any centralized repository is at risk. The big exchanges that hold customer deposits are a big target for hackers fdsaf dfafd safdsa fsa fsa fsa fs af saf sad f saf sa f sa fd saf sa f a </div>
-        </template>
-      </div>
-      <div class="features section">
-        <div class="feature">
-          <template is="dom-if" if="{{isEqual(language,'zh')}}">
-            <div class="title">零风险</div>
-            <div class="more">订单中的卖出代币不必充值到交易所做资金托管，在下单、撮合、清结算过程中一直保存在用户自己区块链的地址中。订单不锁定用户区块链上的代币，下单后用户依然可以任意使用自己的数字代币，余额不足时Loopring自动调整订单的数额且保持价格恒定​。使用loopring交易所，交易所倒闭跑路都不会对用户有任何影响。</div>
-          </template>
-          <template is="dom-if" if="{{!isEqual(language,'zh')}}">
-            <div class="title">Zero-Risk</div>
-            <div class="more">There is a general sense in the cryptocurrency community that any centralized repository is at risk. The big exchanges that hold customer deposits are a big target for hackers fdsaf dfafd safdsa fsa fsa fsa fs af saf sad f saf sa f sa fd saf sa f a </div>
-          </template>
-        </div>
-        <div class="feature">
-          <template is="dom-if" if="{{isEqual(language,'zh')}}">
-            <div class="title">环路撮合​</div>
-            <div class="more">撮合的含义变得更宽泛，不再限于两个交易间的撮合 - 一次撮合可将十几个包含不同类型代币的订单做环路撮合。环路算法的优化将使得买卖价差最小化。再加上订单跨交易所共享机制，将大大增加任意两个代币间的流动性。使用loopring交易所，交易者不需再担心交易所深度不够。</div>
-          </template>
-          <template is="dom-if" if="{{!isEqual(language,'zh')}}">
-            <div class="title">Zero-Risk</div>
-            <div class="more">There is a general sense in the cryptocurrency community that any centralized repository is at risk. The big exchanges that hold customer deposits are a big target for hackers fdsaf dfafd safdsa fsa fsa fsa fs af saf sad f saf sa f sa fd saf sa f a </div>
-          </template>
-        </div>
-        <div class="feature">
-          <template is="dom-if" if="{{isEqual(language,'zh')}}">
-            <div class="title">订单共享</div>
-            <div class="more">Loopring协议下，一个订单可以被广播给多个交易所，被这些交易所并行撮合。一个订单可被一个交易所撮合成功一部分，被另一个交易所撮合成功另一部分。交易所之间存在竞争关系，因此订单会被更快、更好（价格最优）地撮合。使用loopring协议下单，交易不会因交易所被DDOS攻击而无法得到及时撮合。</div>
-          </template>
-          <template is="dom-if" if="{{!isEqual(language,'zh')}}">
-            <div class="title">Zero-Risk</div>
-            <div class="more">There is a general sense in the cryptocurrency community that any centralized repository is at risk. The big exchanges that hold customer deposits are a big target for hackers fdsaf dfafd safdsa fsa fsa fsa fs af saf sad f saf sa f sa fd saf sa f a </div>
-          </template>
-        </div>
-      </div>
-      <template is="dom-if" if="{{isEqual(ico.status, 'preparing'}}">
-        <div class="ico pending section">
-          <template is="dom-if" if="{{isEqual(language,'zh')}}">
-            <div class="title">ICO众筹即将开始{{ico.status}}</div>
-            <div class="more">Loopring协议下，一个订单可以被广播给多个交易所，被这些交易所并行撮合。一个订单可被一个交易所撮合成功一部分，被另一个交易所撮合成功另一部分。交易所之间存在竞争关系，因此订单会被更快、更好（价格最优）地撮合。使用loopring协议下单，交易不会因交易所被DDOS攻击而无法得到及时撮合。</div>
-          </template>
-          <template is="dom-if" if="{{!isEqual(language,'zh')}}">
-            <div class="title">ICO is being prepared</div>
-            <div class="more">There is a general sense in the cryptocurrency community that any centralized repository is at risk. The big exchanges that hold customer deposits are a big target for hackers fdsaf dfafd safdsa fsa fsa fsa fs af saf sad f saf sa f sa fd saf sa f a </div>
-          </template>
-        </div>
-      </template>
-      <template is="dom-if" if="{{isEqual(ico.status, 'started'}}">
-        <div class="ico started section">
-          <template is="dom-if" if="{{isEqual(language,'zh')}}">
-            <div class="title">ICO众筹进行中</div>
-            <div class="more">Loopring协议下，一个订单可以被广播给多个交易所，被这些交易所并行撮合。一个订单可被一个交易所撮合成功一部分，被另一个交易所撮合成功另一部分。交易所之间存在竞争关系，因此订单会被更快、更好（价格最优）地撮合。使用loopring协议下单，交易不会因交易所被DDOS攻击而无法得到及时撮合。</div>
-          </template>
-          <template is="dom-if" if="{{!isEqual(language,'zh')}}">
-            <div class="title">ICO Ongoing</div>
-            <div class="more">There is a general sense in the cryptocurrency community that any centralized repository is at risk. The big exchanges that hold customer deposits are a big target for hackers fdsaf dfafd safdsa fsa fsa fsa fs af saf sad f saf sa f sa fd saf sa f a </div>
-          </template>
-        </div>
-      </template>
-      <template is="dom-if" if="{{isEqual(ico.status, 'ended'}}">
-        <div class="ico ended section">
-          <template is="dom-if" if="{{isEqual(language,'zh')}}">
-            <div class="title">ICO众筹已经结束</div>
-            <div class="more">Loopring协议下，一个订单可以被广播给多个交易所，被这些交易所并行撮合。一个订单可被一个交易所撮合成功一部分，被另一个交易所撮合成功另一部分。交易所之间存在竞争关系，因此订单会被更快、更好（价格最优）地撮合。使用loopring协议下单，交易不会因交易所被DDOS攻击而无法得到及时撮合。</div>
-          </template>
-          <template is="dom-if" if="{{!isEqual(language,'zh')}}">
-            <div class="title">ICO Ended</div>
-            <div class="more">There is a general sense in the cryptocurrency community that any centralized repository is at risk. The big exchanges that hold customer deposits are a big target for hackers fdsaf dfafd safdsa fsa fsa fsa fs af saf sad f saf sa f sa fd saf sa f a </div>
-          </template>
-        </div>
-      </template>
-    </div>
+    <inpage-section class="masthead2">
+      Loopring交易所和协议
+    </inpage-section>
+    <inpage-section class="intro1">
+    </inpage-section>
+    <inpage-section class="intro2">
+    </inpage-section>
     <common-footer></common-footer>
   </template>
   <script>

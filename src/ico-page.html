@@ -1,79 +1,114 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="ico-page">
   <template>
-    <style include="app-grid-style">
+    <style include="iron-flex iron-flex-alignment ">
     :host {
       display: block;
-      background-color: red;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      @apply(--layout-horizontal);
-      @apply(--layout-center-justified);
+      @apply(--layout-vertical);
+      /*@apply(--layout-center-justified);*/
+      font-family: Roboto Mono, monospace;
+    }
+    
+    inpage-section {
       min-height: 90vh;
-      width: 100%;
     }
     
-    @media (min-width: 800px) .footer {
-      height: 304px;
+    .about {
+      background: linear-gradient(rgba(79, 195, 247, 0.45), rgba(79, 195, 247, 0.45)), /*layer*/
+      url(/images/bg1.svg);
+      background-size: cover;
     }
     
-    @media (min-width: 600px) .footer {
-      height: 272px;
+    .plan {
+      background-color: white;
     }
     
-    @media (min-width: 424px) .footer {
-      height: 240px;
+    .rules {
+      background-color: #6200ea;
+      color: rgba(255, 255, 255, 0.85);
     }
     
-    .footer {
-      height: 192px;
-      color: #FFF;
-      align-items: flex-end;
+    .rules a {
+      color: yellow;
     }
     
-    .footer,
-    .footer__content {
-      display: flex;
-      position: relative;
+    .smart-contract {
+      background-color: var(--google-blue-800);
     }
     
-    .footer {
-      z-index: 0;
+    .section-head {
+      font-size: 32px;
+      line-height: 46px;
+      font-weight: 300;
+      background-color:red;
+      @apply(--layout-self-center);
+    }
+    
+    .section-head::after,
+    .section-head::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: white;
+    }
+    
+    li {
+      padding-bottom: 8px;
     }
     </style>
-    <div>ico</div>
-    <footer class="footer">
-      <div class="footer__content" role="presentation">
-        <p>© Google 2016</p>
-        <p>
-          <a target="_blank" rel="noopener" href="http://www.google.com/intl/en/policies/privacy/">Privacy</a> &amp;
-          <a target="_blank" rel="noopener" href="http://www.google.com/intl/en/policies/terms/">Terms</a>
-        </p>
-        <p>
-          <a href="/devsummit/code-of-conduct">Code of Conduct</a>
-        </p>
+    <inpage-section class="about">
+    </inpage-section>
+    <inpage-section class="plan">
+    </inpage-section>
+    <inpage-section class="rules">
+      <div class="vertical layout">
+        <div class="section-head">具体规则</div>
+        <ul>
+          <li>ICO采用以太坊（ETH）智能合约，该<a href="">合约代码开源</a>，工社区审阅;</li>
+          <li> <strong>ICO共7个阶段，每阶段时长约1天</strong>（实际在智能合约中采用以太坊区块高度确定）；</li>
+          <li> 每个阶段在当日早上约11点开始，持续到第二天11点。</li>
+          <li> 每个阶段筹2万个以太，筹到这个数目该阶段为“筹满”，否则为“未筹满）。</li>
+          <li> 筹满后投资者的ETH会被自动打回，不会损失；投资者只能等下一个阶段开始才可以继续投资。</li>
+          <li> 如果某个阶段未筹满，整个ICO结束，不会有下一阶段；</li>
+          <li> 如果一个阶段筹满，由团队触发下一个阶段开始的区块链高度（即时间）。</li>
+          <li> 每个阶段的价格都比上一个阶段更高（见表格）</li>
+          <li> 如果前3个阶段任意一个未筹满，整个ICO失败。资金返还。</li>
+          <li> 如果前3个阶段凑满，ICO成功，最后一个未筹满阶段资金不返还。</li>
+          <li> 如果第4个阶段筹满，但第5个阶段未筹满，团队占比为45%，</li>
+          <li> 如果第5，6，7个阶段成功，团队占比为50%</li>
+          <li> 第7个成功后，ICO结束。</li>
+          <li> ICO期间投资者的代币通过智能合约自动发行，成功后再根据上述规则，一次性发行未发售的代币 - 即用售出代币除以出售占比;</li>
+          <li> 未发售的代币中，5%通过preICO商定价格出售给早期投资者；</li>
+          <li> 未发售的代币中，45%留给团队；</li>
+          <li> 未发售的代币中，50%留给社区推广和对外合作；</li>
+          <li> 团队代币锁定期为3年，第一年后释放25%，第二年35%， 第三年40%；用于社区推广部分不锁定。</li>
+        </ul>
       </div>
-      <svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1224 302">
-        <polygon x="0" y="0" fill="#F0F0F0" points="0 20 1224 0 1224 302 0 302"></polygon>
-        <polygon x="0" y="0" fill="#6387F5" points="0 226 1224 194 1224 302 0 302"></polygon>
-      </svg>
-    </footer>
+    </inpage-section>
+    <inpage-section class="smart-contract">
+      hi
+    </inpage-section>
   </template>
   <script>
   Polymer({
     is: 'ico-page',
     properties: {
 
-      ico: Object
-        // item: {
-        //   type: Object,
-        //   observer: '_itemChanged'
-        // },
-        // section: {
-        //   type: String
-        // },
-        // relatedItems: {
-        //   type: Array
-        // }
+      ico: Object,
+      language: {
+        type: String
+      }
+      // item: {
+      //   type: Object,
+      //   observer: '_itemChanged'
+      // },
+      // section: {
+      //   type: String
+      // },
+      // relatedItems: {
+      //   type: Array
+      // }
     }
     // _itemChanged: function(item) {
     //   this.$.img.src = '';
