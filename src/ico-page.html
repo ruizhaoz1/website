@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="ico-page">
   <template>
-    <style include="iron-flex iron-flex-alignment ">
+    <style include="iron-flex iron-flex-alignment prism-theme-default">
     :host {
       display: block;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -10,23 +10,52 @@
       font-family: Roboto Mono, monospace;
     }
     
-    inpage-section {
-      min-height: 90vh;
+    .rules .section-head::before,
+    .rules .section-head::after {
+      background: white;
+    }
+    
+    .rules .section-head {
+      color: white;
+    }
+    
+    .section-head {
+      font-size: 32px;
+      line-height: 46px;
+      font-weight: 300;
+      text-align: center;
+      align-items: center;
+      width: 100%;
+      font-weight: 400;
+    }
+    
+    .section-head::before,
+    .section-head::after {
+      content: '';
+      width: 10%;
+      height: 2px;
+      margin: 16px;
+      background: #212121;
     }
     
     .about {
       background: linear-gradient(rgba(79, 195, 247, 0.45), rgba(79, 195, 247, 0.45)), /*layer*/
       url(/images/bg1.svg);
       background-size: cover;
+      min-height: 80vh;
     }
     
-    .plan {
-      background-color: white;
+    .timeline {
+      /*background-color: #2979ff;*/
+      padding: 0;
     }
     
     .rules {
-      background-color: #6200ea;
-      color: rgba(255, 255, 255, 0.85);
+      background: url(/images/conversation-ai-hero.png), #004ecb;
+      background-size: cover;
+      background-position: bottom -65px right;
+      background-size: 1076px 648px;
+      color: rgba(255, 255, 255, 0.77);
     }
     
     .rules a {
@@ -34,36 +63,45 @@
     }
     
     .smart-contract {
-      background-color: var(--google-blue-800);
+      background-color: #fffde7;
     }
     
-    .section-head {
-      font-size: 32px;
-      line-height: 46px;
-      font-weight: 300;
-      background-color:red;
-      @apply(--layout-self-center);
-    }
-    
-    .section-head::after,
-    .section-head::before {
-      content: '';
-      width: 20px;
-      height: 2px;
-      background: white;
+    #output {
+      height: 360px;
+      width: 100%;
+      overflow: scroll;
+      text-wrap: normal;
+      border-top: dashed var(--divider-color) 1px;
+      padding-top: 32px;
+      font-size: 12px;
     }
     
     li {
-      padding-bottom: 8px;
+      line-height: 28px;
+    }
+    
+    @media (min-width: 400px) {}
+    
+    @media (min-width: 1200px) {
+      #output {
+        width: 100%;
+        height: 80vh;
+        overflow: scroll;
+        padding: 0 24px 0 24px;
+      }
+      .rules {
+        min-height: 80vh;
+      }
     }
     </style>
     <inpage-section class="about">
     </inpage-section>
-    <inpage-section class="plan">
+    <inpage-section class="timeline">
+      <vertical-timeline></vertical-timeline>
     </inpage-section>
     <inpage-section class="rules">
       <div class="vertical layout">
-        <div class="section-head">具体规则</div>
+        <div class="section-head horizontal center center-justified layout">ICO规则</div>
         <ul>
           <li>ICO采用以太坊（ETH）智能合约，该<a href="">合约代码开源</a>，工社区审阅;</li>
           <li> <strong>ICO共7个阶段，每阶段时长约1天</strong>（实际在智能合约中采用以太坊区块高度确定）；</li>
@@ -87,29 +125,47 @@
       </div>
     </inpage-section>
     <inpage-section class="smart-contract">
-      hi
+      <iron-ajax url="https://raw.githubusercontent.com/MTTP-Project/ico/master/contracts/MTTPToken.sol" auto handle-as="text" last-response="{{code}}"></iron-ajax>
+      <prism-highlighter></prism-highlighter>
+      <div class="section-head horizontal center-justified layout">ICO合约代码</div>
+      <pre id="output"></pre>
     </inpage-section>
+    <common-footer></common-footer>
   </template>
   <script>
   Polymer({
     is: 'ico-page',
     properties: {
-
-      ico: Object,
+      icosettings: Object,
       language: {
         type: String
+      },
+      code: {
+        type: String,
+        observer: '_render'
       }
-      // item: {
-      //   type: Object,
-      //   observer: '_itemChanged'
-      // },
-      // section: {
-      //   type: String
-      // },
-      // relatedItems: {
-      //   type: Array
-      // }
+    },
+    _render: function() {
+      this.$.output.innerHTML = this._highlight(this.code);
+    },
+    _highlight: function(code) {
+      return this.fire('syntax-highlight', {
+        code: code,
+        lang: "JavaScript"
+      }).detail.code;
     }
+
+    // item: {
+    //   type: Object,
+    //   observer: '_itemChanged'
+    // },
+    // section: {
+    //   type: String
+    // },
+    // relatedItems: {
+    //   type: Array
+    // }
+
     // _itemChanged: function(item) {
     //   this.$.img.src = '';
     //   this.$.img.src = item.imageUrl;

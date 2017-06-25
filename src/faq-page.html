@@ -7,7 +7,7 @@
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <dom-module id="faq-page">
   <template>
-    <style include="iron-flex iron-flex-alignment ">
+    <style include="iron-flex iron-flex-alignment">
     :host {
       background-color: var(--google-grey-100);
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -20,7 +20,13 @@
       linear-gradient(rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.3)), /*layer*/
       url(/images/sample2.jpg);
       background-size: cover;
-      min-height: 480px;
+      color: var(--text-primary-color);
+      font-size: 64px;
+    }
+    
+    .title {
+      padding-top: 100px;
+      padding-right: 200px;
     }
     
     .faq {
@@ -29,35 +35,42 @@
       padding: 24px;
     }
     
-    .q,
-    .a {
-      padding: 16px;
-    }
-    
     .q {
-      color: #4fc3f7;
+      color: #2979ff;
+      padding: 0 16px 0 16px;
       font-size: 20px;
     }
     
+    .a {
+      padding: 16px;
+      color: var(--primary-text-color);
+    }
+    
     iron-icon {
-      color: var(--google-grey-500);
+      color: var(--disabled-text-color);
+      width: 48px;
+    }
+    
+    @media (min-width: 400px) {}
+    
+    @media (min-width: 1200px) {
+      .title {
+        padding-top: 200px;
+        padding-right: 300px;
+      }
     }
     </style>
     <div>
       <!--data loading -->
       <iron-ajax url="data/{{language}}/faqs.json" auto last-response="{{faqs}}"></iron-ajax>
       <inpage-section class="masthead">
-        常见问题
+        <div class="title">常见问题</div>
       </inpage-section>
       <div class="container">
         <template is="dom-repeat" items={{faqs}} as=faq index-as=index>
-          <inpage-section class="cofounders section">
+          <inpage-section class="section">
             <div class="horizontal layout faq start">
-              <div class="q self-start">
-                <iron-icon icon="question-answer"></iron-icon>
-              </div>
-              <div></div>
-              <div class="a self-start"></div>
+              <iron-icon icon="question-answer"></iron-icon>
               <div class="vertical layout flex">
                 <div class="q self-start">[[faq.q]]</div>
                 <div class="a self-start">[[faq.a]]</div>
