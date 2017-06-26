@@ -7,27 +7,22 @@
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <dom-module id="faq-page">
   <template>
-    <style include="iron-flex iron-flex-alignment">
+    <style include="iron-flex iron-flex-alignment  common-layout-style">
     :host {
-      background-color: var(--google-grey-100);
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      background-color: white;
       @apply(--layout-vertical);
-      color: rgba(0, 0, 0, 0.8);
     }
     
     .masthead {
-      background: url(/images/yellow-cover.svg), /*layer*/
-      linear-gradient(rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.3)), /*layer*/
-      url(/images/sample2.jpg);
+      background: url(/images/sample2.jpg);
       background-size: cover;
       color: var(--text-primary-color);
       font-size: 64px;
     }
     
-    .title {
-      padding-top: 100px;
-      padding-right: 200px;
-    }
+ inpage-section.section:hover {
+  background-color: #eee;
+ }
     
     .faq {
       background-color: white;
@@ -64,22 +59,41 @@
       <!--data loading -->
       <iron-ajax url="data/{{language}}/faqs.json" auto last-response="{{faqs}}"></iron-ajax>
       <inpage-section class="masthead">
-        <div class="title">常见问题</div>
+        <div class="container">
+          <div class="spacer3"></div>
+          <div class="spacer3"></div>
+          <div class="spacer3"></div>
+          <div class="spacer3"></div>
+          <div class="spacer3"></div>
+          <div class="page-title">常见问题</div>
+          <div class="spacer3"></div>
+          <div class="spacer3"></div>
+        </div>
       </inpage-section>
-      <div class="container">
-        <template is="dom-repeat" items={{faqs}} as=faq index-as=index>
-          <inpage-section class="section">
-            <div class="horizontal layout faq start">
+      <template is="dom-repeat" items={{faqs}} as=faq index-as=index>
+        <inpage-section class="section">
+          <div class="container">
+            <div class="spacer2"></div>
+            <div class="container--inner horizontal start layout">
               <iron-icon icon="question-answer"></iron-icon>
               <div class="vertical layout flex">
                 <div class="q self-start">[[faq.q]]</div>
                 <div class="a self-start">[[faq.a]]</div>
               </div>
             </div>
-          </inpage-section>
-        </template>
+            <div class="spacer2"></div>
+          </div>
+        </inpage-section>
+      </template>
+    </div>
+    <inpage-section>
+      <div class="container hide-on-small">
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
       </div>
-      <common-footer></common-footer>
+    </inpage-section>
+    <social-bar></social-bar>
+    <common-footer></common-footer>
   </template>
   <script>
   Polymer({
