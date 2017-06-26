@@ -14,7 +14,7 @@
     }
     
     .masthead {
-      background: url(/images/sample2.jpg);
+      background: url(/images/sample2.jpg), #303030;
       background-size: cover;
       color: var(--text-primary-color);
       font-size: 64px;
@@ -27,7 +27,9 @@
     }
     
     .q {
-      color: #2979ff;
+      /*color: #2979ff;*/
+      color: #29b6f6;
+      font-weight: 600;
       padding: 0 16px 0 16px;
       font-size: 20px;
     }
@@ -37,7 +39,7 @@
       color: var(--primary-text-color);
     }
     
-    iron-icon {
+    .section iron-icon {
       color: var(--disabled-text-color);
       width: 48px;
     }
@@ -61,7 +63,7 @@
         <div class="container">
           <div class="spacer"></div>
           <div class="lable">
-            <iron-icon icon="social:group"></iron-icon>
+            <iron-icon icon="question-answer"></iron-icon>
             <h2>FAQ</h2>
           </div>
           <div class="spacer3 hide-on-small"></div>

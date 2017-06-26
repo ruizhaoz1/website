@@ -28,7 +28,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/prism-element/prism-highlighter.html">
-<link rel="import" href="../bower_components/prism-element/prism-theme-home.html">
+<link rel="import" href="../bower_components/prism-element/prism-theme-default.html">
 <link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="../bower_components/app-localize-behavior/app-localize-behavior.html">
 <link rel="import" href="common-layout-style.html">
@@ -195,7 +195,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     @media (max-width: 400px) {
       .leftItem [icon=menu] {
         display: block;
-        color:white;
+        color: white;
       }
       paper-tabs {
         display: none;
@@ -211,52 +211,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <iron-ajax url="data/{{language}}/locales.json" auto last-response="{{locales}}"></iron-ajax>
     <iron-ajax url="//raw.githubusercontent.com/Loopring/blogs/master/ico.json" auto last-response="{{icosettings}}"></iron-ajax>
     <!-- UI -->
-    <app-drawer-layout drawer-width="288px" force-narrow>
+    <!-- <app-drawer-layout  drawer-width="288px" force-narrow> -->
       <!-- navigation drawer for small screen sizes -->
-      <app-drawer slot="drawer" id="drawer" swipe-open="[[smallScreen]]">
-        <template is="dom-if" if="[[smallScreen]]">
+      <!-- <app-drawer slot="drawer" id="drawer" swipe-open="{{smallScreen}}"> -->
+        <template is="dom-if" if="{{smallScreen}}">
           <app-toolbar class="profileBar">
-            <img class="profilePic" src="images/logo1.svg" width="30" height="30">
+            <img class="profilePic" src="images/logo1.svg" width="30" height="30"/>
             <div class="profileName">Loopring</div>
-            <!-- <paper-icon-button icon="settings" aria-label="[[locales.alt.settings]]"></paper-icon-button> -->
           </app-toolbar>
           <div class="list">
-            <a href="#home">[[locales.tabs.home]]</a>
-            <a href="#team">[[locales.tabs.team]]</a>
-            <a href="#faq">[[locales.tabs.faq]]</a>
-            <a href="#ico">[[locales.tabs.ico]]</a>
-            <!-- <a href="#blog">[[locales.tabs.blog]]</a> -->
+            <a href="#home">{{locales.tabs.home}}</a>
+            <a href="#team">{{locales.tabs.team}}</a>
+            <a href="#faq">{{locales.tabs.faq}}</a>
+            <a href="#ico">{{locales.tabs.ico}}</a>
+            <a href="#blog">{{locales.tabs.blog}}</a>
           </div>
         </template>
-      </app-drawer>
-      <app-header-layout id="headerLayout">
+      <!-- </app-drawer> -->
+      <app-header-layout fullbleed id="headerLayout">
         <!-- main header -->
-        <app-header slot="header" effects="waterfall" condenses="[[!smallScreen]]">
+        <app-header slot="header" effects="waterfall" condenses="{{!smallScreen}}">
           <app-toolbar id="mainToolbar">
             <div class="navItem leftItem">
-              <paper-icon-button icon="menu" drawer-toggle alt="[[locales.alt.toogle_navigation_menu]]"></paper-icon-button>
-              <a href="#[[sectionData.section]]" tabindex="-1">
-                <paper-icon-button icon="arrow-back" alt="[[locales.alt.back_to_home]]"></paper-icon-button>
+              <paper-icon-button icon="menu" drawer-toggle alt="{{locales.alt.toogle_navigation_menu}}"></paper-icon-button>
+              <a href="#{{sectionData.section}}" tabindex="-1">
+                <paper-icon-button icon="arrow-back" alt="{{locales.alt.back_to_home}}"></paper-icon-button>
               </a>
             </div>
-        <!--     <div class="spacer">
-              <img src="images/logo3.svg" class="logo" alt="Loopring">
-            </div> -->
-            <div class="navItem">
-              <!-- <paper-icon-button icon="shopping-cart" aria-label="Shopping cart"></paper-icon-button> -->
-              <!-- <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button> -->
+            <!-- <div class="spacer">
+              <img src="images/logo3.svg" class="logo" alt="Loopring" />
             </div>
+            <div class="navItem">
+              <paper-icon-button icon="shopping-cart" aria-label="Shopping cart"></paper-icon-button>
+              <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button>
+            </div> -->
           </app-toolbar>
           <paper-tabs selected="{{routeData.page}}" scrollable>
-            <paper-tab name="home"> <a href="#home">[[locales.tabs.home]]</a></paper-tab>
-            <paper-tab name="team"> <a href="#team">[[locales.tabs.team]]</a></paper-tab>
-            <paper-tab name="faq"> <a href="#faq">[[locales.tabs.faq]]</a></paper-tab>
-            <!-- <paper-tab name="blog"> <a href="#blog">[[locales.tabs.blog]]</a></paper-tab> -->
-            <paper-tab name="ico"> <a href="#ico">[[locales.tabs.ico]]</a></paper-tab>
-            </paper-tab>
+            <paper-tab name="home"> <a href="#home">{{locales.tabs.home}}</a></paper-tab>
+            <paper-tab name="team"> <a href="#team">{{locales.tabs.team}}</a></paper-tab>
+            <paper-tab name="faq"> <a href="#faq">{{locales.tabs.faq}}</a></paper-tab>
+            <!-- <paper-tab name="blog"> <a href="#blog">{{locales.tabs.blog}}</a></paper-tab> -->
+            <paper-tab name="ico"> <a href="#ico">{{locales.tabs.ico}}</a></paper-tab>
           </paper-tabs>
         </app-header>
-        <iron-pages selected="[[routeData.page]]" attr-for-selected="name" vertical self-flex center layout>
+        <iron-pages selected="{{routeData.page}}" attr-for-selected="name" vertical self-flex center layout>
           <home-page name="home" language="{{language}}" locales="{{locales}}" ico="{{icosettings}}"></home-page>
           <team-page name="team" language="{{language}}" locales="{{locales}}"></team-page>
           <ico-page name="ico" language="{{language}}" locales="{{locales}}" ico="{{icosettings}}"></ico-page>
@@ -264,7 +262,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <blog-page name="blog" language="{{language}}" locales="{{locales}}"></blog-page>
         </iron-pages>
       </app-header-layout>
-    </app-drawer-layout>
+    <!-- </app-drawer-layout> -->
   </template>
   <script>
   Polymer({
