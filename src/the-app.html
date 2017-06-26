@@ -117,19 +117,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     
     paper-tabs {
       --paper-tabs-selection-bar-color: yellow;
-   /*   margin-left: -55px;
+      /*   margin-left: -55px;
       color: white;
       font-size: 13px;*/
+      font-weight: normal;
     }
     
     paper-tab {
       /*@apply --layout-flex-none;*/
       --paper-tab-ink: #ffeb3b;
+      color: white;
+      font-weight: normal;
     }
     
     paper-tab a {
-      font-size: 16px;
-      color: rgba(255,255,255,0.7);
+      /*font-size: 16px;*/
+      color: rgba(255, 255, 255, 0.7);
       width: 100%;
       display: block;
       padding: 8px;
@@ -243,7 +246,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <!-- <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button> -->
             </div>
           </app-toolbar>
-          <paper-tabs selected="{{routeData.page}}" scrollable sticky>
+          <paper-tabs selected="{{routeData.page}}" scrollable>
             <paper-tab name="default"> <a href="#default">[[locales.tabs.default]]</a></paper-tab>
             <paper-tab name="team"> <a href="#team">[[locales.tabs.team]]</a></paper-tab>
             <paper-tab name="faq"> <a href="#faq">[[locales.tabs.faq]]</a></paper-tab>
