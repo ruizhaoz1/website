@@ -1,34 +1,22 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <dom-module id="common-footer">
   <template>
     <style include="iron-flex iron-flex-alignment">
     :host {
       display: block;
-      background-color: white;
-      @apply(--layout-horizontal);
+      background-color: #29b6f6;
+      @apply(--layout-vertical);
+      @apply(--layout-center-center);
       min-height: 64px;
-      padding: 32px 0 32px 0;
+    }
+    
+    @media (min-width: 1200px) {
+      :host {
+        @apply(--layout-horizontal);
+      }
     }
     </style>
-    <div class="flex horizontal center-justified layout">
-      <div class="vertical start layout">
-        <div class="item">Abaac</div>
-        <div class="item">Abcff</div>
-        <div class="item">Abc</div>
-      </div>
-      <div class="vertical start layout">
-        <div class="item">Abc</div>
-        <div class="item">Abca</div>
-        <div class="item">Abc</div>
-      </div>
-      <div class="vertical start layout">
-        <div class="item">Abc</div>
-        <div class="item">Abc</div>
-        <div class="item">Abc</div>
-      </div>
-    </div>
+    © COPYRIGHT 2017. ALL RIGHTS RESERVED.
   </template>
   <script>
   Polymer({
