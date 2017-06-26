@@ -17,6 +17,19 @@
       color: white;
     }
     
+    .title1 {
+      font-size: 48px
+    }
+
+    span.highlight {
+      color: #ffc400;
+      text-decoration: underline;
+    }
+    
+    .title2 {
+      font-size: 32px;
+    }
+    
     .feature-set1 {
       background-color: white;
     }
@@ -101,27 +114,31 @@
     @media (min-width: 400px) {}
     
     @media (min-width: 1200px) {
-      .masthead--child--visible {
+      .masthead--child--3 {
         background: url(/images/right-bottom-blue.svg), #3c3c3c;
         background-size: cover;
         color: rgba(255, 255, 255, 0.7);
+      }
+
+      .masthead--child--2 {
+        /*background: url(/images/design-guidelines.svg)*/
       }
     }
     </style>
     <inpage-section class="masthead">
       <div class="container">
         <div class="spacer"></div>
-        <div class="lable">
-          <div class="title">Loopring</div>
-          <div class="title">新一代虚拟资产交易所和协议</div>
+        <div class="lable vertical start layout">
+          <div class="title1"><span class="highlight">L</span>oopring</div>
+          <div class="title2">新一代虚拟资产交易所和协议</div>
         </div>
-        <div class="spacer3"></div>
+        <!-- <div class="spacer3"></div> -->
         <div class="container--inner">
           <div class="block hide-on-small">
           </div>
-          <div class="block hide-on-small">
+          <div class="block masthead--child--2 hide-on-small">
           </div>
-          <div class="block masthead--child--visible">
+          <div class="block masthead--child--3">
             <div class="block-inner--v">
               <p>Loopring是在以太坊（Ethereum）上ERC20代币间进行交易的，基于智能合约（Smart Contract）的开放协议。该协议允许多家交易所通过竞争，对公共订单进行链外撮合（off-chain order-matching）及链上清结算（on-chain transactional clearing and payment)。</p>
               <br/>
