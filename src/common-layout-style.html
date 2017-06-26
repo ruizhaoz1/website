@@ -53,11 +53,14 @@
       padding: 24px;
       min-height: 352px;
       line-height: 28px;
-
     }
     
     .hide-on-small {
       display: none;
+    }
+    
+    .show-on-small {
+      display: inherit;
     }
     
     .block-2 {
@@ -79,11 +82,17 @@
     }
     
     @media (min-width: 1200px) {
+      .lable {
+        padding-left: 0;
+      }
       .block-2 {
         min-height: 200px;
       }
       .hide-on-small {
         display: inherit;
+      }
+      .show-on-small {
+        display: none;
       }
       .container--inner {
         @apply(--layout-horizontal);

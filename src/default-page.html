@@ -20,7 +20,7 @@
     .title1 {
       font-size: 48px
     }
-
+    
     span.highlight {
       color: #ffc400;
       text-decoration: underline;
@@ -28,6 +28,7 @@
     
     .title2 {
       font-size: 32px;
+      color: rgba(255, 255, 255, 0.7);
     }
     
     .feature-set1 {
@@ -69,6 +70,17 @@
     
     .sponsors {
       background-color: white;
+    }
+    
+    .sponsors .container--inner {
+      @apply(--layout-vertical);
+      @apply(--layout-center-center);
+      @apply(--layout-around-justified);
+    }
+    
+    .sponsors iron-image {
+      height: 48px;
+      width: 240px;
     }
     
     .whitepaper {
@@ -119,9 +131,11 @@
         background-size: cover;
         color: rgba(255, 255, 255, 0.7);
       }
-
       .masthead--child--2 {
         /*background: url(/images/design-guidelines.svg)*/
+      }
+      .sponsors .container--inner {
+        @apply(--layout-horizontal);
       }
     }
     </style>
@@ -130,7 +144,8 @@
         <div class="spacer"></div>
         <div class="lable vertical start layout">
           <div class="title1"><span class="highlight">L</span>oopring</div>
-          <div class="title2">新一代虚拟资产交易所和协议</div>
+          <div class="title2">新一代虚拟资产交易所</div>
+          <div class="title2">和交易协议</div>
         </div>
         <!-- <div class="spacer3"></div> -->
         <div class="container--inner">
@@ -255,7 +270,15 @@
           <iron-icon icon="image:hdr-weak"></iron-icon>
           <h2>合作伙伴</h2>
         </div>
-        <div class="spacer3"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner">
+          <iron-image sizing="contain" src="/images/sponsors/sequoiadb.png"></iron-image>
+          <div class="spacer1 show-on-small"></div>
+          <iron-image sizing="contain" src="/images/sponsors/jingtian.gif"></iron-image>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
       </div>
     </inpage-section>
     <social-bar></social-bar>

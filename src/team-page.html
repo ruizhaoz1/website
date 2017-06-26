@@ -1,97 +1,278 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="team-page">
   <template>
-    <style include="iron-flex iron-flex-alignment app-grid-style">
+    <style include="iron-flex iron-flex-alignment  common-layout-style">
     :host {
       display: block;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
     
     .masthead {
-      background: url(/images/yellow-cover.svg), /*layer*/
-      linear-gradient(rgba(79, 195, 247, 0.3), rgba(79, 195, 247, 0.3)), /*layer*/
-      url(/images/sample2.jpg);
+      background: url(/images/sample2.jpg);
       background-size: cover;
       color: var(--text-primary-color);
       font-size: 64px;
     }
     
-    .title {
-      padding-top: 100px;
+    .page-title {
       padding-right: 200px;
+      letter-spacing: 0.5em;
+    }
+
+    .contributors-1,
+    .core-members-1,
+    .core-members-2 {
+      background-color: #eee;
+      /*@apply(--layout-center-center);*/
     }
     
-    .cofounders,
-    .developers,
-    .section {
-      --app-grid-columns: 4;
-      --app-grid-gutter: 32px;
-      /*min-height: 90vh;*/
+    small {
+      display: block;
+      /*color: rgba(0, 0, 0, 0.7);*/
+      opacity: 0.7;
     }
     
-    .cofounders,
-    .developers {
+    .desc {
+      opacity: 0.7;
+      max-width: 360px;
+    }
+    
+    .core-members-1 .block,
+    .core-members-2 .block {
       background-color: white;
+      @apply(--layout-center);
+      min-height: 520px;
     }
     
-    .advisors,
-    .advisors2 {
-      background-color: #004ecb;
-      color: white;
+    .contributors-2,
+    .advisors-1,
+    .advisors-2 {
+      background-color: #212121;
+      color: rgba(255, 255, 255, 0.7);
     }
     
-    .advisors .section-head::before,
-    .advisors .section-head::after {
-      background: white;
+    .advisors-1 .block,
+    .advisors-2 .block {
+      background-color: #303030;
+      @apply(--layout-center);
+      min-height: 520px;
     }
     
-    .section-head {
-      font-size: 32px;
-      line-height: 46px;
-      font-weight: 300;
-      text-align: center;
-      align-items: center;
-      width: 100%;
-      font-weight: 400;
+    .advisors-1 iron-image,
+    .advisors-2 iron-image,
+    .core-members-1 iron-image,
+    .core-members-2 iron-image {
+      width: 352px;
+      height: 352px;
     }
+    /*   .contributors-1 {
+      background-color: #eee;
+    }*/
     
-    .section-head::before,
-    .section-head::after {
-      content: '';
-      width: 10%;
-      height: 2px;
-      margin: 16px;
-      background: #212121;
-    }
+    @media (min-width: 400px) {}
     
-    .section {
-      --app-grid-columns: 1;
-      --app-grid-gutter: 9;
-    }
-    
-    @media (min-width: 400px) {
-      .section {
-        --app-grid-columns: 1;
-        --app-grid-gutter: 32px;
-      }
-    }
-    
-    @media (min-width: 1200px) {
-      .section {
-        --app-grid-columns: 4;
-        --app-grid-gutter: 32px;
-      }
-      .title {
-        padding-top: 200px;
-        padding-right: 300px;
-      }
-    }
+    @media (min-width: 1200px) {}
     </style>
     <iron-ajax url="data/{{language}}/team.json" auto last-response="{{team}}"></iron-ajax>
-    <inpage-section class="masthead section">
-      <div class="title">团队</div>
+    <inpage-section class="masthead">
+      <div class="container">
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="page-title">团队</div>
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+      </div>
     </inpage-section>
-    <inpage-section class="cofounders section">
+    <inpage-section class="core-members-1">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="star-border"></iron-icon>
+          <h2>核心团队</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner">
+          <div class="block core-member--4">
+            <div class="block-inner--v center-justified">
+              <iron-image src="/images/team/dan-wang.jpg" preload sizing="cover"></iron-image>
+              <h2>王东</h2>
+              <small> > 创始人、基金会主席</small>
+              <small> > 前Google美国Tech Lead，软件研发工程师、京东高级研发总监、币丰港交易所和币丰支付联合创始人</small>
+            </div>
+          </div>
+          <div class="block core-member--5">
+            <div class="block-inner--v">
+              <iron-image src="/images/team/chao-ma.jpg" preload sizing="cover"></iron-image>
+              <h2>马超</h2>
+              <small> > 首席技术官（CTO）</small>
+              <small> > 曾担任Google高级研发工程师，著名互联网金融公司架构师等职位，熟悉区块链与虚拟资产交易所技术和生态。</small>
+            </div>
+          </div>
+          <div class="block core-member--6">
+            <div class="block-inner--v">
+              <iron-image src="/images/team/jay-zhou.jpg" preload sizing="cover"></iron-image>
+              <h2>周杰</h2>
+              <small> > 首席市场官（CMO）</small>
+              <small> > 曾任职PayPal和Ernst & Young。5年运营和风控工作经验。2年创业经验。一直积极参与比特币社区发展。</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </inpage-section>
+    <inpage-section class="core-members-2">
+      <div class="container">
+        <!-- <div class="spacer"></div> -->
+        <div class="container--inner">
+          <div class="block core-member--4">
+            <div class="block-inner--v center-justified">
+              <iron-image src="/images/team/xiaoliang-chen.jpg" preload sizing="cover"></iron-image>
+              <h2>陈晓亮</h2>
+              <small> > 首席运营官（COO）</small>
+              <small> > 曾任三诺集团首席信息官（CIO），资深金融产品运营专家。</small>
+            </div>
+          </div>
+          <div class="block core-member--5">
+            <div class="block-inner--v">
+              <iron-image src="/images/team/alex-wang.jpg" preload sizing="cover"></iron-image>
+              <h2>王辉</h2>
+              <small> > 算法工程师 - 环路撮合引擎</small>
+              <small> > 复旦大学计算机博士，擅长数据安全，密码学，机器学习和多方计算。曾发表多篇学术论文于国际刊物和会议。</small>
+            </div>
+          </div>
+          <div class="block core-member--6">
+            <div class="block-inner--v">
+              <iron-image src="/images/team/kongliang-zhong.jpg" preload sizing="cover"></iron-image>
+              <h2>钟孔亮</h2>
+              <small> > 架构师 - 智能合约</small>
+              <small> > 曾任中国银行，银联资深工程师，宜信高级架构师。参与过虚拟币交易所初创公司的创业。</small>
+            </div>
+          </div>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+      </div>
+    </inpage-section>
+    <inpage-section class="contributors-1">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable self-center">
+          <h2>团队成员和社区参与者</h2>
+        </div>
+        <div class="spacer"></div>
+        <div class=" vertical wrap center center-justified layout">
+          <div class="secondary-member">
+            <div class="secondary-member">
+              <span>Leon Wang</span> - <span class="desc">研发工程师 / 谷歌中国早期员工，在硅谷总部供职多年，先后担任手机地图负责人，谷歌地图搜负责人。</span></div>
+            <div class="secondary-member">
+              <span>Joe Mikhail</span> - <span class="desc">研发工程师 / 谷歌搜索与基础架构团队研发工程师。</span></div>
+            <div class="secondary-member">
+              <span>刘春明</span> - <span class="desc">研发工程师 / 前币丰港交易所合伙人兼首席架构师，美团高级研发总监。</span></div>
+          </div>
+          <div class="spacer3 hide-on-small"></div>
+          <div class="spacer3 hide-on-small"></div>
+        </div>
+      </div>
+    </inpage-section>
+    <inpage-section class="advisors-1">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="star-border"></iron-icon>
+          <h2>首席顾问</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner">
+          <div class="block advisor--1">
+            <div class="block-inner--v center-justified">
+              <iron-image src="/images/team/xuefeng-li.jpg" preload sizing="cover"></iron-image>
+              <h2>李雪峰</h2>
+              <small> > 众安科技CTO</small>
+              <small> > 提供交易所落地、政策支持、可行性论证相关咨询。</small>
+            </div>
+          </div>
+          <div class="block advisor--2">
+            <div class="block-inner--v">
+              <iron-image src="/images/team/chao-ma.jpg" preload sizing="cover"></iron-image>
+              <h2>Thomas Johansson</h2>
+              <small> > 瑞典Lund大学教授计算机教授，国际著名密码学专家，标准加密算法SNOW 3G和Grain设计者。</small>
+              <small> > 提供环路撮合算法相关咨询。</small>
+            </div>
+          </div>
+          <div class="block advisor--3">
+            <div class="block-inner--v">
+              <iron-image src="/images/team/jay-zhou.jpg" preload sizing="cover"></iron-image>
+              <h2>白硕</h2>
+              <small> > 中国分布式总账基础协议联盟（ChinaLedger）技术委员会主任，中国金融标准化技术委员会证券分委员会副主任委员。​</small>
+              <small> > 提供协议跨链实施的相关咨询。</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </inpage-section>
+    <inpage-section class="contributors-2">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable self-center">
+          <h2>顾问团队</h2>
+        </div>
+        <div class="spacer"></div>
+        <div class=" vertical wrap center center-justified layout">
+          <div class="secondary-member">
+            <span>阚海斌</span>- <span class="desc">复旦大学教授，博士生导师。编码与信息论，密码学与信息安全，计算复杂性领域国家级专家。</span></div>
+          <div class="secondary-member">
+            <span>达鸿飞</span> - <span class="desc">小蚁创始人，Onchain分布科技CEO，中国区块链社区早期成员。</span></div>
+          <div class="secondary-member">
+            <span>张鸣晨</span> - <span class="desc">红点创投副总裁。</span></div>
+          <div class="secondary-member">
+            <span>初夏虎</span> - <span class="desc">维优元界创始人、区块链和数字资产专家。</span></div>
+          <div class="secondary-member">
+            <span>郭小胡</span> - <span class="desc">德州大学奥斯丁分校教授，博士生导师。</span></div>
+          <div class="secondary-member">
+            <span>向江旭</span> - <span class="desc">苏宁云商集团IT总部执行副总裁，负责苏宁云商集团前瞻性技术创新和研究​。</span></div>
+          <div class="secondary-member">
+            <span>夏华夏</span> - <span class="desc">美团点评科学家​，曾任Goolge美国技术架构师。</span></div>
+          <div class="secondary-member">
+            <span>肖军</span> - <span class="desc">京东副总裁，京东X事业部总裁​。</span></div>
+          <div class="secondary-member">
+            <span>Kelvin 龙凯</span> - <span class="desc">银联智慧创始人兼总裁。</span></div>
+          <div class="secondary-member">
+            <span>Alex Cheng</span> -
+            <span class="desc">百度副总裁，百度美国研发中心总经理；前Google美国高级研发总监。</span>
+          </div>
+          <div class="secondary-member">
+            <span>郭一鹏</span> -
+            <span class="desc">北京汇垠天然投资基金管理有限公司董事长。</span>
+          </div>
+          <div class="secondary-member">
+            <span>曹寅</span> -
+            <span class="desc">能源区块链实验室创始合伙人，信达证券首席区块链专家，首席能源互联网研究员。</span>
+          </div>
+          <div class="secondary-member">
+            <span>巨蟹</span> -
+            <span class="desc">区块链内容创造和分享平台YOYOW项目​联合创始人，比特股理事。</span>
+          </div>
+          <div class="secondary-member">
+            <span>于伟</span> -
+            <span class="desc">微软必应研发负责人之一，微软广告系统技术负责人，微软技术合伙人。</span>
+          </div>
+          <div class="secondary-member">
+            <span>曹晶</span> -
+            <span class="desc">德华资本首席投资官，白石创投创始人，全美华人金融协会理事，Upper90 投资基金合伙人​。</span>
+          </div>
+          <div class="secondary-member">
+            <span>段念</span> -
+            <span class="desc">花虾金融CEO，兼华夏信财副总裁。</span>
+          </div>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+      </div>
+    </inpage-section>
+    <!-- <inpage-section class="cofounders section">
       <div class="section-head horizontal center-justified layout">
         核心成员
       </div>
@@ -128,7 +309,8 @@
           <member-card-small member="{{m}}"></member-card-small>
         </template>
       </div>
-    </inpage-section>
+    </inpage-section> -->
+    <social-bar></social-bar>
     <common-footer></common-footer>
   </template>
   <script>
