@@ -20,10 +20,6 @@
       font-size: 64px;
     }
     
- inpage-section.section:hover {
-  background-color: #eee;
- }
-    
     .faq {
       background-color: white;
       width: 100%;
@@ -45,15 +41,6 @@
       color: var(--disabled-text-color);
       width: 48px;
     }
-    
-    @media (min-width: 400px) {}
-    
-    @media (min-width: 1200px) {
-      .title {
-        padding-top: 200px;
-        padding-right: 300px;
-      }
-    }
     </style>
     <div>
       <!--data loading -->
@@ -70,18 +57,28 @@
           <div class="spacer3"></div>
         </div>
       </inpage-section>
+      <inpage-section>
+        <div class="container">
+          <div class="spacer"></div>
+          <div class="lable">
+            <iron-icon icon="social:group"></iron-icon>
+            <h2>FAQ</h2>
+          </div>
+          <div class="spacer3 hide-on-small"></div>
+        </div>
+      </inpage-section>
       <template is="dom-repeat" items={{faqs}} as=faq index-as=index>
         <inpage-section class="section">
           <div class="container">
             <div class="spacer2"></div>
             <div class="container--inner horizontal start layout">
-              <iron-icon icon="question-answer"></iron-icon>
+              <iron-icon icon="image:navigate-next"></iron-icon>
               <div class="vertical layout flex">
                 <div class="q self-start">[[faq.q]]</div>
                 <div class="a self-start">[[faq.a]]</div>
               </div>
             </div>
-            <div class="spacer2"></div>
+            <div class="spacer"></div>
           </div>
         </inpage-section>
       </template>

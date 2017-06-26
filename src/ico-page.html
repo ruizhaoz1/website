@@ -1,49 +1,22 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="ico-page">
   <template>
-    <style include="iron-flex iron-flex-alignment prism-theme-default">
+    <style include="iron-flex iron-flex-alignment  common-layout-style prism-theme-default">
     :host {
       display: block;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       @apply(--layout-vertical);
-      /*@apply(--layout-center-justified);*/
-      font-family: Roboto Mono, monospace;
     }
     
-    .rules .section-head::before,
-    .rules .section-head::after {
-      background: white;
-    }
-    
-    .rules .section-head {
-      color: white;
-    }
-    
-    .section-head {
-      font-size: 32px;
-      line-height: 46px;
-      font-weight: 300;
-      text-align: center;
-      align-items: center;
-      width: 100%;
-      font-weight: 400;
-      padding-bottom: 28px;
-    }
-    
-    .section-head::before,
-    .section-head::after {
-      content: '';
-      width: 10%;
-      height: 2px;
-      margin: 16px;
-      background: #212121;
+    .masthead {
+      background: url(/images/devices.svg) no-repeat, #2979ff;
+      /*background-size: cover;*/
+      color: var(--text-primary-color);
+      background-position: bottom right;
+      font-size: 64px;
     }
     
     .about {
-      background: linear-gradient(rgba(79, 195, 247, 0.45), rgba(79, 195, 247, 0.45)), /*layer*/
-      url(/images/bg1.svg);
-      background-size: cover;
-      min-height: 80vh;
+      background-color: #eee;
     }
     
     .timeline {
@@ -52,29 +25,25 @@
     }
     
     .rules {
-      background: url(/images/conversation-ai-hero.png), #212121;
-      background-size: cover;
-      background-position: bottom -65px right;
-      background-size: 1076px 648px;
-      color: rgba(255, 255, 255, 0.77);
-    }
-    
-    .rules a {
-      color: yellow;
+      background-color: #303030;
+      color: white;
     }
     
     .smart-contract {
-      background-color: #fffde7;
+      background-color: #ffeb3b;
     }
     
     #output {
-      height: 360px;
+      height: 260px;
+      border-radius: 10px;
+      background-color: #303030;
+      color: rgba(255, 255, 255, 0.7);
       width: 100%;
       overflow: scroll;
       text-wrap: normal;
-      border-top: dashed var(--divider-color) 1px;
+      /*border-top: dashed var(--divider-color) 1px;*/
       padding-top: 32px;
-      font-size: 12px;
+      font-size: 14px;
     }
     
     .rules li {
@@ -95,42 +64,101 @@
       }
     }
     </style>
+    <inpage-section class="masthead">
+      <div class="container">
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+        <div class="page-title">代币发售</div>
+        <div class="spacer3"></div>
+        <div class="spacer3"></div>
+      </div>
+    </inpage-section>
     <inpage-section class="about">
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="info-outline"></iron-icon>
+          <h2>关于ICO</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner ">
+          范德萨解放路的安居房拉的数据分开了电视剧啊废旧塑料大符坤临时大家付款绿豆沙甲方电视剧啊分撒娇安居房
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="spacer3 hide-on-small"></div>
+      </div>
     </inpage-section>
     <inpage-section class="timeline">
-      <vertical-timeline></vertical-timeline>
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="timeline"></iron-icon>
+          <h2>时间线</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner vertical  layout">
+          <vertical-timeline></vertical-timeline>
+        </div>
+        <div class="spacer2"></div>
+        <div class="spacer2"></div>
+      </div>
     </inpage-section>
     <inpage-section class="rules">
-      <div class="vertical layout">
-        <div class="section-head horizontal center center-justified layout">ICO规则</div>
-        <ul>
-          <li>ICO持续时间为30天，最多筹集10万个ETH，最少筹集5万个ETH；</li>
-          <li>众筹不到5万ETH，项目失败，一星期内返还投资；</li>
-          <li>前2万ETH（含）每个ETH兑换6000 LRC；</li>
-          <li>2万到4万（含）间每个ETH兑换5750 LRC；</li>
-          <li>4万到6万（含）间每个ETH兑换5500 LRC；</li>
-          <li>6万到8万（含）间每个ETH兑换5250 LRC；</li>
-          <li>8万到10万（含）间每个ETH兑换5000 LRC；</li>
-          <li>筹集到5万到6万ETH（含），ICO期间出售的LRC占比为40.0%；</li>
-          <li>筹集到6万到7万ETH（含），ICO期间出售的LRC占比为42.5%；</li>
-          <li>筹集到7万到8万ETH（含），ICO期间出售的LRC占比为45.0%；</li>
-          <li>筹集到8万到9万ETH（含），ICO期间出售的LRC占比为47.5%；</li>
-          <li>筹集到9万到10万ETH（含），ICO期间出售的LRC占比为50.0%；</li>
-          <li>未发售的LRC中，10%通过preICO商定价格出售给早期投资者和社区贡献者；</li>
-          <li>未发售的LRC中，40%留给团队；</li>
-          <li>未发售的LRC中，50%留给社区推广和对外合作；</li>
-          <li>团队持有的LRC锁定期为3年，第一年后释放25%，第二年35%， 第三年40%；</li>
-          <li>ICO期间投资者的代币通过智能合约自动发行并转账给用户投资的ETH地址；</li>
-          <li>ICO结束后，由团队触发智能合约一次性发行未发售的代币。</li>
-        </ul>
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="gavel"></iron-icon>
+          <h2>ICO规则</h2>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner vertical  layout">
+          <ul>
+            <li>ICO持续时间为30天，最多筹集10万个ETH，最少筹集5万个ETH；</li>
+            <li>众筹不到5万ETH，项目失败，一星期内返还投资；</li>
+            <li>前2万ETH（含）每个ETH兑换6000 LRC；</li>
+            <li>2万到4万（含）间每个ETH兑换5750 LRC；</li>
+            <li>4万到6万（含）间每个ETH兑换5500 LRC；</li>
+            <li>6万到8万（含）间每个ETH兑换5250 LRC；</li>
+            <li>8万到10万（含）间每个ETH兑换5000 LRC；</li>
+            <li>筹集到5万到6万ETH（含），ICO期间出售的LRC占比为40.0%；</li>
+            <li>筹集到6万到7万ETH（含），ICO期间出售的LRC占比为42.5%；</li>
+            <li>筹集到7万到8万ETH（含），ICO期间出售的LRC占比为45.0%；</li>
+            <li>筹集到8万到9万ETH（含），ICO期间出售的LRC占比为47.5%；</li>
+            <li>筹集到9万到10万ETH（含），ICO期间出售的LRC占比为50.0%；</li>
+            <li>未发售的LRC中，10%通过preICO商定价格出售给早期投资者和社区贡献者；</li>
+            <li>未发售的LRC中，40%留给团队；</li>
+            <li>未发售的LRC中，50%留给社区推广和对外合作；</li>
+            <li>团队持有的LRC锁定期为3年，第一年后释放25%，第二年35%， 第三年40%；</li>
+            <li>ICO期间投资者的代币通过智能合约自动发行并转账给用户投资的ETH地址；</li>
+            <li>ICO结束后，由团队触发智能合约一次性发行未发售的代币。</li>
+          </ul>
+        </div>
+        <div class="spacer2"></div>
       </div>
     </inpage-section>
     <inpage-section class="smart-contract">
-      <iron-ajax url="https://raw.githubusercontent.com/MTTP-Project/ico/master/contracts/MTTPToken.sol" auto handle-as="text" last-response="{{code}}"></iron-ajax>
       <prism-highlighter></prism-highlighter>
-      <div class="section-head horizontal center-justified layout">ICO合约代码</div>
-      <pre id="output"></pre>
+      <iron-ajax url="https://raw.githubusercontent.com/MTTP-Project/ico/master/contracts/MTTPToken.sol" auto handle-as="text" last-response="{{code}}"></iron-ajax>
+      <div class="container">
+        <div class="spacer"></div>
+        <div class="lable">
+          <iron-icon icon="code"></iron-icon>
+          <h2>ICO合约代码</h2>
+          <p>开源代码可在<a href="https://github.com/Loopring/ico">https://github.com/Loopring/ico</a>中找到</p>
+        </div>
+        <div class="spacer3 hide-on-small"></div>
+        <div class="container--inner vertical  layout">
+          <pre id="output"></pre>
+        </div>
+        <div class="spacer2"></div>
+        <div class="spacer2"></div>
+      </div>
     </inpage-section>
+    <social-bar></social-bar>
     <common-footer></common-footer>
   </template>
   <script>
