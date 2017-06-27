@@ -211,58 +211,58 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <iron-ajax url="src/data/{{language}}/locales.json" auto last-response="{{locales}}"></iron-ajax>
     <iron-ajax url="//raw.githubusercontent.com/Loopring/blogs/master/ico.json" auto last-response="{{icosettings}}"></iron-ajax>
     <!-- UI -->
-    <!-- <app-drawer-layout  drawer-width="288px" force-narrow> -->
-    <!-- navigation drawer for small screen sizes -->
-    <!-- <app-drawer slot="drawer" id="drawer" swipe-open="{{smallScreen}}"> -->
-    <template is="dom-if" if="{{smallScreen}}">
-      <app-toolbar class="profileBar">
-        <img class="profilePic" src=/src/images/logo1.svg" width="30" height="30" />
-        <div class="profileName">Loopring</div>
-      </app-toolbar>
-      <div class="list">
-        <a href="#home">{{locales.tabs.home}}</a>
-        <a href="#team">{{locales.tabs.team}}</a>
-        <a href="#faq">{{locales.tabs.faq}}</a>
-        <a href="#ico">{{locales.tabs.ico}}</a>
-        <a href="#blog">{{locales.tabs.blog}}</a>
-      </div>
-    </template>
-    <!-- </app-drawer> -->
-    <app-header-layout fullbleed id="headerLayout">
-      <!-- main header -->
-      <app-header slot="header" effects="waterfall" condenses="{{!smallScreen}}">
-        <app-toolbar id="mainToolbar">
-          <div class="navItem leftItem">
-            <paper-icon-button icon="menu" drawer-toggle alt="{{locales.alt.toogle_navigation_menu}}"></paper-icon-button>
-            <a href="#{{sectionData.section}}" tabindex="-1">
-              <paper-icon-button icon="arrow-back" alt="{{locales.alt.back_to_home}}"></paper-icon-button>
-            </a>
-          </div>
-          <div class="spacer">
-            <img src="/src/images/logo2.svg" class="logo" alt="Loopring" />
-          </div>
-          <!--     <div class="navItem">
+    <app-drawer-layout drawer-width="288px" force-narrow>
+      <!-- navigation drawer for small screen sizes -->
+      <app-drawer slot="drawer" id="drawer" swipe-open="{{smallScreen}}">
+        <!-- <template is="dom-if" if="{{smallScreen}}"> -->
+        <app-toolbar class="profileBar">
+          <img class="profilePic" src="/src/images/logo1.svg" width="30" height="30" />
+          <div class="profileName">Loopring</div>
+        </app-toolbar>
+        <div class="list">
+          <a href="#home">{{locales.tabs.home}}</a>
+          <a href="#team">{{locales.tabs.team}}</a>
+          <a href="#faq">{{locales.tabs.faq}}</a>
+          <a href="#ico">{{locales.tabs.ico}}</a>
+          <!-- <a href="#blog">{{locales.tabs.blog}}</a> -->
+        </div>
+        <!-- </template> -->
+      </app-drawer>
+      <app-header-layout fullbleed id="headerLayout">
+        <!-- main header -->
+        <app-header slot="header" effects="waterfall" condenses="{{!smallScreen}}">
+          <app-toolbar id="mainToolbar">
+            <div class="navItem leftItem">
+              <paper-icon-button icon="menu" drawer-toggle alt="{{locales.alt.toogle_navigation_menu}}"></paper-icon-button>
+              <a href="#{{sectionData.section}}" tabindex="-1">
+                <paper-icon-button icon="arrow-back" alt="{{locales.alt.back_to_home}}"></paper-icon-button>
+              </a>
+            </div>
+            <div class="spacer">
+              <img src="/src/images/logo2.svg" class="logo" alt="Loopring" />
+            </div>
+            <!--     <div class="navItem">
               <paper-icon-button icon="shopping-cart" aria-label="Shopping cart"></paper-icon-button>
               <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button>
             </div> -->
-        </app-toolbar>
-        <paper-tabs selected="[[selectedPage]]" attr-for-selected="name" scrollable>
-          <paper-tab name="home"> <a href="#home">{{locales.tabs.home}}</a></paper-tab>
-          <paper-tab name="team"> <a href="#team">{{locales.tabs.team}}</a></paper-tab>
-          <paper-tab name="faq"> <a href="#faq">{{locales.tabs.faq}}</a></paper-tab>
-          <!-- <paper-tab name="blog"> <a href="#blog">{{locales.tabs.blog}}</a></paper-tab> -->
-          <paper-tab name="ico"> <a href="#ico">{{locales.tabs.ico}}</a></paper-tab>
-        </paper-tabs>
-      </app-header>
-      <iron-pages selected="[[selectedPage]]" attr-for-selected="name" vertical self-flex center layout>
-        <home-page name="home" language="{{language}}" locales="{{locales}}" ico="{{icosettings}}"></home-page>
-        <team-page name="team" language="{{language}}" locales="{{locales}}"></team-page>
-        <ico-page name="ico" language="{{language}}" locales="{{locales}}" ico="{{icosettings}}"></ico-page>
-        <faq-page name="faq" language="{{language}}" locales="{{locales}}"></faq-page>
-        <blog-page name="blog" language="{{language}}" locales="{{locales}}"></blog-page>
-      </iron-pages>
-    </app-header-layout>
-    <!-- </app-drawer-layout> -->
+          </app-toolbar>
+          <paper-tabs selected="[[selectedPage]]" attr-for-selected="name" scrollable>
+            <paper-tab name="home"> <a href="#home">{{locales.tabs.home}}</a></paper-tab>
+            <paper-tab name="team"> <a href="#team">{{locales.tabs.team}}</a></paper-tab>
+            <paper-tab name="faq"> <a href="#faq">{{locales.tabs.faq}}</a></paper-tab>
+            <!-- <paper-tab name="blog"> <a href="#blog">{{locales.tabs.blog}}</a></paper-tab> -->
+            <paper-tab name="ico"> <a href="#ico">{{locales.tabs.ico}}</a></paper-tab>
+          </paper-tabs>
+        </app-header>
+        <iron-pages selected="[[selectedPage]]" attr-for-selected="name" vertical self-flex center layout>
+          <home-page name="home" language="{{language}}" locales="{{locales}}" ico="{{icosettings}}"></home-page>
+          <team-page name="team" language="{{language}}" locales="{{locales}}"></team-page>
+          <ico-page name="ico" language="{{language}}" locales="{{locales}}" ico="{{icosettings}}"></ico-page>
+          <faq-page name="faq" language="{{language}}" locales="{{locales}}"></faq-page>
+          <blog-page name="blog" language="{{language}}" locales="{{locales}}"></blog-page>
+        </iron-pages>
+      </app-header-layout>
+    </app-drawer-layout>
   </template>
   <script>
   Polymer({
@@ -287,8 +287,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     observers: [
+      '_hashDidChange(route.path)',
       '_routePageChanged(routeData.page)'
     ],
+
+    _hashDidChange: function() {
+      Polymer.AppLayout.scroll({
+        top: 0,
+        behavior: 'silent'
+      });
+      this.$.headerLayout.resetLayout();
+      this.$.drawer.close();
+    },
 
     _routePageChanged(page) {
       if (page && this.selectedPage !== page) {
