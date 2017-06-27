@@ -78,7 +78,7 @@
         <div class="spacer3"></div>
         <div class="spacer3 hide-on-small"></div>
         <div class="spacer3 hide-on-small"></div>
-        <div class="page-title">代币发售</div>
+        <div class="page-title">{{locales.ico.title}}</div>
         <div class="spacer3 hide-on-small"></div>
         <div class="spacer3"></div>
       </div>
@@ -88,12 +88,14 @@
         <div class="spacer"></div>
         <div class="lable">
           <iron-icon icon="info-outline"></iron-icon>
-          <h2>关于ICO</h2>
+          <h2>{{locales.ico.about}}</h2>
         </div>
         <div class="spacer3 hide-on-small"></div>
         <div class="spacer3 hide-on-small"></div>
         <div class="container--inner vertical layout ">
-          我们正在准备ICO相关工作。下面是ICO的时间段，不过我们保留更改ICO具体时间的权利。
+          <template is="dom-repeat" items={{locales.ico.about_text}} as=line>
+            <p>[[line]]</p>
+          </template>
           <div>
             <h1 class="ico-time">2017/08/01 ⟷ 2017/08/30</h1>
           </div>
@@ -107,11 +109,16 @@
         <div class="spacer"></div>
         <div class="lable">
           <iron-icon icon="timeline"></iron-icon>
-          <h2>时间线</h2>
+          <h2>{{locales.ico.timeline}}</h2>
         </div>
         <div class="spacer3 hide-on-small"></div>
         <div class="container--inner vertical  layout">
-          <vertical-timeline></vertical-timeline>
+          <template is="dom-if" if={{isChinese}}>
+            <timeline-zh></timeline-zh>
+          </template>
+          <template is="dom-if" if={{!isChinese}}>
+            <timeline-en></timeline-en>
+          </template>
         </div>
         <div class="spacer2"></div>
         <div class="spacer2"></div>
@@ -122,29 +129,14 @@
         <div class="spacer"></div>
         <div class="lable">
           <iron-icon icon="gavel"></iron-icon>
-          <h2>ICO规则</h2>
+          <h2>{{locales.ico.rules}}</h2>
         </div>
         <div class="spacer3 hide-on-small"></div>
         <div class="container--inner vertical  layout">
           <ul>
-            <li>ICO持续时间为30天，最多筹集10万个ETH，最少筹集5万个ETH；</li>
-            <li>众筹不到5万ETH，项目失败，一星期内返还投资；</li>
-            <li>前2万ETH（含）每个ETH兑换6000 LRC；</li>
-            <li>2万到4万（含）间每个ETH兑换5750 LRC；</li>
-            <li>4万到6万（含）间每个ETH兑换5500 LRC；</li>
-            <li>6万到8万（含）间每个ETH兑换5250 LRC；</li>
-            <li>8万到10万（含）间每个ETH兑换5000 LRC；</li>
-            <li>筹集到5万到6万ETH（含），ICO期间出售的LRC占比为40.0%；</li>
-            <li>筹集到6万到7万ETH（含），ICO期间出售的LRC占比为42.5%；</li>
-            <li>筹集到7万到8万ETH（含），ICO期间出售的LRC占比为45.0%；</li>
-            <li>筹集到8万到9万ETH（含），ICO期间出售的LRC占比为47.5%；</li>
-            <li>筹集到9万到10万ETH（含），ICO期间出售的LRC占比为50.0%；</li>
-            <li>未发售的LRC中，10%通过preICO商定价格出售给早期投资者和社区贡献者；</li>
-            <li>未发售的LRC中，40%留给团队；</li>
-            <li>未发售的LRC中，50%留给社区推广和对外合作；</li>
-            <li>团队持有的LRC锁定期为3年，第一年后释放25%，第二年35%， 第三年40%；</li>
-            <li>ICO期间投资者的代币通过智能合约自动发行并转账给用户投资的ETH地址；</li>
-            <li>ICO结束后，由团队触发智能合约一次性发行未发售的代币。</li>
+            <template is="dom-repeat" items={{locales.rule_set}} as=item>
+              <li>[[item]]</li>
+            </template>
           </ul>
         </div>
         <div class="spacer2"></div>
@@ -157,19 +149,17 @@
         <div class="spacer"></div>
         <div class="lable">
           <iron-icon icon="code"></iron-icon>
-          <h2>ICO合约代码</h2>
+          <h2>{{locales.ico.code}}</h2>
         </div>
         <div class="spacer3 hide-on-small"></div>
         <div class="container--inner vertical  layout">
           <pre id="output"></pre>
-          <p>开源代码可在<a href="https://github.com/Loopring/ico">https://github.com/Loopring/ico</a>中找到</p>
+          <p>{{locales.ico.code_on_github}}<a href="https://github.com/Loopring/ico">https://github.com/Loopring/ico</a></p>
         </div>
         <div class="spacer2"></div>
         <div class="spacer2"></div>
       </div>
     </inpage-section>
-    <social-bar></social-bar>
-    <common-footer></common-footer>
   </template>
   <script>
   Polymer({
@@ -183,6 +173,12 @@
         type: String,
         observer: '_render'
       }
+    },
+    isChinese: function() {
+      return this.language === 'zh';
+    },
+    notChinese: function() {
+      return this.language !== 'zh';
     },
     _render: function() {
       this.$.output.innerHTML = this._highlight(this.code);

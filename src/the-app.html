@@ -35,7 +35,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="app-theme.html">
 <link rel="import" href="common-footer.html">
 <link rel="import" href="social-bar.html">
-<link rel="import" href="vertical-timeline.html">
+<link rel="import" href="timeline-zh.html">
+<link rel="import" href="timeline-en.html">
 <link rel="import" href="inpage-section.html">
 <link rel="import" href="home-page.html">
 <link rel="import" href="team-page.html">
@@ -209,7 +210,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <iron-media-query query="max-width: 400px" query-matches="{{smallScreen}}"></iron-media-query>
     <!--data loading -->
     <iron-ajax url="src/data/{{language}}/locales.json" auto last-response="{{locales}}"></iron-ajax>
-    <iron-ajax url="//raw.githubusercontent.com/Loopring/blogs/master/ico.json" auto last-response="{{icosettings}}"></iron-ajax>
+    <!-- <iron-ajax url="//raw.githubusercontent.com/Loopring/blogs/master/ico.json" auto last-response="{{icosettings}}"></iron-ajax> -->
     <!-- UI -->
     <app-drawer-layout drawer-width="288px" force-narrow>
       <!-- navigation drawer for small screen sizes -->
@@ -261,6 +262,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <faq-page name="faq" language="{{language}}" locales="{{locales}}"></faq-page>
           <blog-page name="blog" language="{{language}}" locales="{{locales}}"></blog-page>
         </iron-pages>
+        <social-bar></social-bar>
+        <common-footer locales="{{locales}}"></common-footer>
       </app-header-layout>
     </app-drawer-layout>
   </template>
@@ -282,7 +285,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       locales: Object,
       icosettings: Object,
       language: {
-        value: 'zh'
+        value: 'en'
       }
     },
 
@@ -301,9 +304,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     },
 
     _routePageChanged(page) {
+      console.log("lang: " + this.language);
       if (page && this.selectedPage !== page) {
         this.selectedPage = page || 'home';
-        console.log("this.page :" + this.selectedPage);
+        // console.log("this.page :" + this.selectedPage);
       }
     },
 
