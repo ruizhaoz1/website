@@ -3,22 +3,22 @@
         "name": "王东",
         "role": "发起人、基金会主席",
         "desc": "aaa",
-        "img": "images/default-profile.jpg"
+        "img": "/src/images/default-profile.jpg"
     }, {
         "name": "周杰",
         "role": "CMO",
         "desc": "aaa",
-        "img": "images/default-profile.jpg"
+        "img": "/src/images/default-profile.jpg"
     }, {
         "name": "陈晓亮",
         "role": "COO",
         "desc": "aaa",
-        "img": "images/default-profile.jpg"
+        "img": "/src/images/default-profile.jpg"
     }, {
         "name": "马超",
         "role": "发起人、基金会主席",
         "desc": "aaa",
-        "img": "images/default-profile.jpg"
+        "img": "/src/images/default-profile.jpg"
     }],
     "developers": [{
         "name": "王东",
@@ -43,22 +43,22 @@
         "name": "王东",
         "role": "发起人、基金会主席",
         "desc": "aaa",
-        "img": "images/default-profile.jpg"
+        "img": "/src/images/default-profile.jpg"
     }, {
         "name": "周杰",
         "role": "发起人、基金会主席",
         "desc": "aaa",
-        "img": "images/default-profile.jpg"
+        "img": "/src/images/default-profile.jpg"
     }, {
         "name": "陈晓亮",
         "role": "发起人、基金会主席",
         "desc": "aaa",
-        "img": "images/default-profile.jpg"
+        "img": "/src/images/default-profile.jpg"
     }, {
         "name": "马超",
         "role": "发起人、基金会主席",
         "desc": "aaa",
-        "img": "images/default-profile.jpg"
+        "img": "/src/images/default-profile.jpg"
     }],
     "advisors2": [{
         "name": "王东",

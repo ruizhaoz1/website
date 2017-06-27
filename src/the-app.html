@@ -95,7 +95,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
     
     .spacer img {
-      background-color: #303030;
+      background-color: #3c3c3c;
       border-radius: 50%;
       height: 48px;
       width: 48px;
@@ -208,7 +208,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <!-- media query -->
     <iron-media-query query="max-width: 400px" query-matches="{{smallScreen}}"></iron-media-query>
     <!--data loading -->
-    <iron-ajax url="/data/{{language}}/locales.json" auto last-response="{{locales}}"></iron-ajax>
+    <iron-ajax url="src/data/{{language}}/locales.json" auto last-response="{{locales}}"></iron-ajax>
     <iron-ajax url="//raw.githubusercontent.com/Loopring/blogs/master/ico.json" auto last-response="{{icosettings}}"></iron-ajax>
     <!-- UI -->
     <!-- <app-drawer-layout  drawer-width="288px" force-narrow> -->
@@ -238,15 +238,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <paper-icon-button icon="arrow-back" alt="{{locales.alt.back_to_home}}"></paper-icon-button>
             </a>
           </div>
-          <!-- <div class="spacer">
-              <img src="images/logo3.svg" class="logo" alt="Loopring" />
-            </div>
-            <div class="navItem">
+          <div class="spacer">
+            <img src="/src/images/logo2.svg" class="logo" alt="Loopring" />
+          </div>
+          <!--     <div class="navItem">
               <paper-icon-button icon="shopping-cart" aria-label="Shopping cart"></paper-icon-button>
               <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button>
             </div> -->
         </app-toolbar>
-        <paper-tabs selected="[[selectedPage]]"  attr-for-selected="name"  scrollable>
+        <paper-tabs selected="[[selectedPage]]" attr-for-selected="name" scrollable>
           <paper-tab name="home"> <a href="#home">{{locales.tabs.home}}</a></paper-tab>
           <paper-tab name="team"> <a href="#team">{{locales.tabs.team}}</a></paper-tab>
           <paper-tab name="faq"> <a href="#faq">{{locales.tabs.faq}}</a></paper-tab>
@@ -275,8 +275,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     properties: {
       selectedPage: {
         type: String
-        // reflectToAttribute: true,
-        // value: 'home'
+          // reflectToAttribute: true,
+          // value: 'home'
       },
       route: Object,
       locales: Object,
