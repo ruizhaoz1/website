@@ -1,9 +1,13 @@
 {
-  
     "tabs": {
-        "default": "Loopring",
-        "ico": "ICO",
+        "home": "Protocol",
+        "team": "Team",
         "faq": "FAQ",
-        "blog": "Blogs"
+        "blog": "Blog",
+        "ico": "ICO"
+    },
+    "alt": {
+        "toogle_navigation_menu": "toogle_navigation_menu",
+        "back_to_home": "Back to Home"
     }
 }
