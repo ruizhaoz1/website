@@ -8,7 +8,6 @@
     },
     "alt": {
         "toogle_navigation_menu": "toogle_navigation_menu",
-        "back_to_home": "Back to Home",
-        "settings": "Settings"
+        "back_to_home": "回到主页"
     }
 }
