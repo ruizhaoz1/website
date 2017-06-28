@@ -235,17 +235,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <app-toolbar id="mainToolbar">
             <div class="navItem leftItem">
               <paper-icon-button icon="menu" drawer-toggle alt="{{locales.alt.toogle_navigation_menu}}"></paper-icon-button>
-              <a href="#{{sectionData.section}}" tabindex="-1">
-                <paper-icon-button icon="arrow-back" alt="{{locales.alt.back_to_home}}"></paper-icon-button>
-              </a>
             </div>
             <div class="spacer">
               <img src="/src/images/logo2.svg" class="logo" alt="Loopring" />
             </div>
-            <!--     <div class="navItem">
-              <paper-icon-button icon="shopping-cart" aria-label="Shopping cart"></paper-icon-button>
-              <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button>
-            </div> -->
+            <div class="navItem">
+              <paper-icon-button icon="" aria-label=""></paper-icon-button>
+              <!-- <paper-icon-button icon="more-vert" aria-label="More options"></paper-icon-button> -->
+            </div>
           </app-toolbar>
           <paper-tabs selected="[[selectedPage]]" attr-for-selected="name" scrollable>
             <paper-tab name="home"> <a href="#home">{{locales.tabs.home}}</a></paper-tab>
