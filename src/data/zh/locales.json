@@ -1,10 +1,10 @@
 {
     "tabs": {
         "home": "Loopring",
-        "team": "团队",
+        "team": "团队介绍",
         "faq": "常见问题",
         "blog": "博客",
-        "ico": "ICO"
+        "ico": "代币ICO"
     },
     "alt": {
         "toogle_navigation_menu": "toogle_navigation_menu",
