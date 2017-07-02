@@ -1,4 +1,4 @@
-body { font-family: Roboto, 'LantingHei SC', monospace, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif; font-size: 0.8rem; line-height: 1.9 }
+body { font-family:  'arial',  "Microsoft YaHei", "微软雅黑", Roboto, 'LantingHei SC', monospace, STXihei, "华文细黑", SimSun, "宋体", Heiti, "黑体", arial, sans-serif; font-size: 0.8rem; line-height: 1.9 }
 ::-moz-selection { background: #31b8f5; color: #fff }
 ::selection { background: #31b8f5; color: #fff }
 ::-moz-selection { background: #31b8f5; color: #fff }
@@ -848,7 +848,7 @@ ul.flexbox { list-style: none; padding-left: 0; margin-bottom: 0 }
 .topbar-brand { float: none; font-size: 0.875rem; line-height: 1 }
 .topbar-brand .logo-inverse { display: none }
 .topbar-left { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center }
-.topbar-nav { display: -webkit-inline-box; display: -webkit-inline-flex; display: inline-flex; font-weight: 600; font-size: .9rem; line-height: 90px; z-index: 910 }
+.topbar-nav { display: -webkit-inline-box; display: -webkit-inline-flex; display: inline-flex; font-weight: 600; font-size: 1rem; line-height: 90px; z-index: 910 }
 .topbar-nav .nav-item { position: relative; -webkit-transition: .4s; transition: .4s }
 .topbar-nav .nav-item:hover>.nav-link { opacity: 1 }
 .topbar-nav .nav-item+.nav-item { margin-left: 1.5rem }
@@ -988,10 +988,10 @@ ul.flexbox { list-style: none; padding-left: 0; margin-bottom: 0 }
 .team-gw { display: table; }
 .team-gw .item { text-align: center; }
 .team-gw .item h6{ padding: 10px 0 0; margin: 0; }
-.team-Loopring .item { text-align: center; }
-.team-Loopring .item h6 { margin: 0; }
-.team-Loopring .item p { margin-top: 10px; }
-.team-Loopring .item img { display: block; width: 240px; height: 240px; margin: 0 auto 20px; border-radius: 120px; }
+.team-mttp .item { text-align: center; }
+.team-mttp .item h6 { margin: 0; }
+.team-mttp .item p { margin-top: 10px; }
+.team-mttp .item img { display: block; width: 240px; height: 240px; margin: 0 auto 20px; border-radius: 120px; }
 @media (max-width:991px) {
 	.section-header { max-width: 90% }
 }
@@ -1029,7 +1029,7 @@ ul.flexbox { list-style: none; padding-left: 0; margin-bottom: 0 }
 	.team-gw .item:first-child .over-info { padding: 30px 50px; }
 	.team-gw .item .over-info h6 { color: #fff; }
 	.over-info { }
-	.team-Loopring .item { display: table-cell; width: 25%; padding: 0 50px; }
+	.team-mttp .item { display: table-cell; width: 25%; padding: 0 50px; }
 }
 .section-inverse .section-dialog { background-color: #191919 }
 .section-inverse .section-dialog.section-white { background: #fff; border-radius: 0; color: #000; line-height: 2.4; }
