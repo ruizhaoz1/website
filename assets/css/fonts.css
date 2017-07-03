@@ -1,4 +1,4 @@
-@font-face { font-family: iconfont; src: url(../fonts/iconfont.eot?j1nzjo); src: url(../fonts/iconfont.eot?j1nzjo#iefix) format('embedded-opentype'), url(../fonts/icon-font.ttf?j1nzjo) format('truetype'), url(../fonts/iconfont.woff?j1nzjo) format('woff'), url(../fonts/iconfont.svg?j1nzjo#gr) format('svg'); font-weight: 400; font-style: normal }
+@font-face { font-family: iconfont; src: url(../fonts/iconfont.eot?j1nzjo); src: url(../fonts/iconfont.eot?j1nzjo#iefix) format('embedded-opentype'), url(../fonts/iconfont.ttf?j1nzjo) format('truetype'), url(../fonts/iconfont.woff?j1nzjo) format('woff'), url(../fonts/iconfont.svg?j1nzjo#gr) format('svg'); font-weight: 400; font-style: normal }
 [class*=" icon-"], [class^=icon-] { font-family: iconfont; speak: none; font-style: normal; font-weight: 400; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale }
 .icon-github:before { content: "\e90e"; }
 .icon-gavel:before { content: "\e900"; }
