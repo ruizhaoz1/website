@@ -153,3 +153,8 @@ time { display: block; font-size: 1rem; font-weight: bold; }
 .featurecrolled .topbar.topbar-sticky { height: auto; }
 .language a{ position: absolute; right: 15px; color: rgba(255, 255, 255, 0.5);  }
 .language a:hover{ color: #29b6f6;}
+.wechat-m{ position: relative; margin-bottom: 50px; }
+.wechat-m img{ width: 200px; height: auto; border:1px solid #000; }
+.wechat-m.fixed img{ width: 145px; }
+@media (min-width:1366px) {
+.wechat-m.fixed{position: fixed; right: 20px; bottom: -30px; z-index: 5;}
