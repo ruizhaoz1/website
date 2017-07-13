@@ -59,7 +59,9 @@
                 <div class="ico-info">
                     <p>Loopring'll estimately launch Token Sale in August. Please stay in tune till we announce the final schedule.</p>
                     <h4>2017/08/01 ⟷ 2017/08/30</h4>
-                    <div class="text-center"><div class="wechat-m"><img src="../assets/img/wechat-m.png"></div></div>
+                    <div class="text-center">
+                        <div class="wechat-m"><img src="../assets/img/wechat-m.png"></div>
+                    </div>
                 </div>
         </section>
         <section class="section">
@@ -120,26 +122,21 @@
                     <h2>Rules</h2>
                 </header>
                 <ul class="ico-rule">
-                    <li>Token Sale Distribution Ends in 30 days, Hardcap is 100,000 ETH, Softcap is 50,000ETH; All the tokens will be refunded within one week, if the project fail;
-                    </li>
-                    <li>Price at the time of token sale:</li>
-                    <li>0~20000 ETH(inc.) 1 ETH to 6000 LRC</li>
-                    <li>20000~40000 ETH(inc.) 1 ETH to 5750 LRC</li>
-                    <li>40000~60000 ETH (inc.) 1 ETH to 5500 LRC</li>
-                    <li>60000~80000 ETH (inc.) 1 ETH to 5250 LRC</li>
-                    <li>80000~100000 ETH(inc.) 1 ETH to 5250 LRC</li>
-                    <li>50000~60000 ETH(inc.) 40% LRC will be sold through Token Sale</li>
-                    <li>60000~70000 ETH (inc.) 42.5% LRC will be sold through Token Sale</li>
-                    <li>70000~80000 ETH (inc.) 45% LRC will be sold through Token Sale </li>
-                    <li>80000~90000 ETH(inc.) 47.5% LRC will be sold through Token Sale</li>
-                    <li>90000~100000 ETH(inc.) 50% LRC will be sold through Token Sale </li>
-                    <li>10% LRC will be sold at PRE-Token Sale to community and participants </li>
-                    <li>40% LRC will be used for Loopring Team Tech Development</li>
-                    <li>50% LRC will be used for Community and Business Development</li>
-                    <li>Loopring team has THREE years lockup expiration, first year release 25%, second year release 35%, third year release 40%;</li>
-                    <li>All Token Sale contributors will be distributed token to their ETH address via smart contract;</li>
-                    <li>Smart contract will execute LRC distribution once Token Sale success;</li>
-                    <li>When implemented on other public blockchains, alt-LRC tokens will also be issued proportionally to the addresses that partcipated in this original Token Sale - as long as the singing algorithm is also ECDSA (with 5% fee); otherwise, Loopring foundation reserves the right to issue alt-LRC tokens on other blockchains in a different way.</li>
+                    <li>Loopring Token (aka Loopring Coin or LRC) is a ERC20-compatible token issued using our smart contract (The smart contract) on Ethereum.</li>
+                    <li>The smart contract will issue LRC immediately after receiving ETH payment to the sourcing address. DO NOT withdraw ETH from exhanges directly to the smart contract. You may lose part of all your LRC, for which we shall not be held responsible nor provide any technical support. LRC has no vesting period.</li>
+                    <li>The remaining unsold token allocation will be issued within one week after token sale using the same smart contract. A detailed layout based on different fundraising scenarios can be found in below. Loopring development team believes that a capped fundraiser will promote a widespread distribution of the tokens, a necessary prerequisite to launching a robust network.</li>
+                    <li>Token Sale Distribution Ends in 30 days, Hardcap is 120,000 ETH, Softcap is 50,000ETH; All the tokens will be refunded within one week (minus some gas cost) if the project fail, the last transaction may cause the final sale slightly over 120,000 ETH.</li>
+                    <li>The fundraiser will last for a period of 152500 blocks (about 30 days). Throughout this period, a contribution of one ether will lead to an allocation of five-thousand LPC plus a time dependent bonus. This bonus is meant to incentivize contributors not ot delay their participation. The bonus starts at 20%, meaning that a contribution of 1 LPC yield an allocation of 5000*(1+20%)=6000 LPC and decrease progressively to 0% over 10 periods(20%, 16%, 14%, 12%, 10%, 8%, 6%, 4%, 2%, 0%). </li>
+                    <li>50000~60000 ETH(inc.) 32.5% LRC will be sold through Token Sale</li>
+                    <li>60000~70000 ETH (inc.) 35% LRC will be sold through Token Sale</li>
+                    <li>70000~80000 ETH (inc.) 37.5% LRC will be sold through Token Sale</li>
+                    <li>80000~90000 ETH(inc.) 40% LRC will be sold through Token Sale</li>
+                    <li>90000~100000 ETH(inc.) 42.5% LRC will be sold through Token Sale</li>
+                    <li>100000~110000 ETH(inc.) 45% LRC will be sold through Token Sale</li>
+                    <li>110000~120000 ETH(inc.) 47.5% LRC will be sold through Token Sale</li>
+                    <li>12000 to above 50% LRC will be sold through Token Sale</li>
+                    <li>The Loopring Foundation will manage the contributions according to its purpose. Initially, the Foundation will budget for 4 years. The Foundation will have the discretion to pay for service it believes will benefit the promotion of the Loopting protocol, either in tokens or another currency. The remaining 40% unsold tokens will be distributed to the team will vest in a period of 4 years. Additionally, 60% rest will pay for research, legal service, business development,communications and marketing. </li>
+                    <li>When implemented on other public blockchain(eg, EOS, Qtum), alt-LRC tokens will also be issued proportionally to the addresses that participated in this original Token Sale - as long as the singing algorithm is also ECDSA (with 5% fee); otherwise, Loopring foundation reserves the right to issue alt-LRC tokens on other blockchain in a different way.</li>
                 </ul>
             </div>
         </section>
@@ -404,17 +401,17 @@ contract LoopringToken is StandardToken {
     <!-- END Main container -->
     <!-- Footer -->
     <footer class="site-footer ">
-    <div class="content">
-        <div class="social-logo">
-            <span><a href="https://github.com/loopring" class="wrapper"><i class="icon-github icon"></i></a></span>
-            <span><a href="https://loopring-team.slack.com/home" class="wrapper"><i class="icon-slack icon"></i></a></span>
-            <span><a href="https://twitter.com/loopringorg" class="wrapper"><i class="icon-twitter icon"></i></a></span>
-            <span><a href="mailto:foundation@loopring.org" class="wrapper"><i class="icon-mail icon"></i></a></span>
-            <span><a href="https://medium.com/@loopring" class="wrapper"><i class="icon-medium icon"></i></a></span>
-        </div>
-        <div class="copyright">
-            Loopring Foundation, All right reserved.
-        </div>
+        <div class="content">
+            <div class="social-logo">
+                <span><a href="https://github.com/loopring" class="wrapper"><i class="icon-github icon"></i></a></span>
+                <span><a href="https://loopring-team.slack.com/home" class="wrapper"><i class="icon-slack icon"></i></a></span>
+                <span><a href="https://twitter.com/loopringorg" class="wrapper"><i class="icon-twitter icon"></i></a></span>
+                <span><a href="mailto:foundation@loopring.org" class="wrapper"><i class="icon-mail icon"></i></a></span>
+                <span><a href="https://medium.com/@loopring" class="wrapper"><i class="icon-medium icon"></i></a></span>
+            </div>
+            <div class="copyright">
+                Loopring Foundation, All right reserved.
+            </div>
         </div>
         <div class="wechat-m"><img src="../assets/img/wechat-m.png"></div>
     </footer>
@@ -423,4 +420,3 @@ contract LoopringToken is StandardToken {
     <script src="../assets/js/core.min.js"></script>
     <script src="../assets/js/main.min.js"></script>
 </body>
-
