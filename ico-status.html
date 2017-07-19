@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script>
+    var contractAddr = '0xEF68e7C694F40c8202821eDF525dE3782458639f'; // Official ICO smart-contract address.
+    // var contractAddr = '0x8c9816AEB886874Dd01915Cd23747384224548B1'; // Testing ICO smart-contract address.
+    var firstBlockApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xe85365d5cccf7a50eb3089b148421fc4071a14ecdc0132b14221a69229be01ea&tag=latest&apikey=1F73WEV5ZM2HKPIVCG65U5QQ427NPUG9FI";
+    var priceApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xa035b1fe6fc95504ec34c01f5f457ced39c26a91e52e2bdf1623238a202c7c3c&tag=latest&apikey=1F73WEV5ZM2HKPIVCG65U5QQ427NPUG9FI";
+    var totalEthRaisedApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xa9a18ddafd06100850696bc955220f260d8765e597e9e5c33f2862f51056aa50&tag=latest&apikey=1F73WEV5ZM2HKPIVCG65U5QQ427NPUG9FI";
+    var totalSupplyApi = "https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress=" + contractAddr;
+    var currentBlock = "https://api.etherscan.io/api?module=proxy&action=eth_blockNumber"
+
+    $(document).ready(function() {
+        $.get(firstBlockApi, function(data) {
+            console.log("Data: ", data.result);
+            var num = parseInt(data.result, 16);
+            $("#fistblock").text(num);
+            $("#lastblock").text(num + 15250 * 10);
+        });
+
+        $.get(priceApi, function(data) {
+            console.log("Data: ", data.result);
+            var num = parseInt(data.result, 16);
+            num = num / 1e18;
+            $("#currPrice").text(num + " LRC/ETH");
+        });
+
+        $.get(totalSupplyApi, function(data) {
+            console.log("Data: ", data.result);
+            var num = parseInt(data.result, 10);
+            num = num / 1e18;
+            $("#totalSupply").text(num + " LRC");
+        });
+
+        $.get(totalEthRaisedApi, function(data) {
+            console.log("Data: ", data.result);
+            var num = parseInt(data.result, 16);
+            num = num / 1e18;
+            var succeeded = (num >= 50000);
+            $("#totalEthRaised").text(num + " ETH");
+            $("#succeeded").text(succeeded);
+        });
+
+    });
+
+    function checkAddrTokens() {
+        var addr = $("#checkTokenAddr").val().trim();
+        console.log("addr: ", addr);
+        if (!addr || addr.length != 42) {
+            alert("无效的地址！");
+            return;
+        }
+        var url = "https://etherscan.io/token/" + contractAddr + "?a=" + addr;
+        window.open(url, '_blank');
+    }
+
+    function listHolders() {
+        var url = "https://etherscan.io/token/" + contractAddr + "#balances";
+        window.open(url, '_blank');
+    }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>first block:</td>
+            <td><span id="fistblock"> </span></td>
+        </tr>
+        <tr>
+            <td>last block:</td>
+            <td><span id="lastblock"> </span></td>
+        </tr>
+        <tr>
+            <td>current price:</td>
+            <td><span id="currPrice"> </span></td>
+        </tr>
+        <tr>
+            <td>total supply:</td>
+            <td><span id="totalSupply"> </span></td>
+        </tr>
+        <tr>
+            <td>total eth raised:</td>
+            <td><span id="totalEthRaised"> </span></td>
+        </tr>
+        <tr>
+            <td>succeeded:</td>
+            <td><span id="succeeded"> </span></td>
+        </tr>
+    </table>
+    <br/>
+    <br/>
+    <div>
+        <input id="checkTokenAddr" size="50" placeholder="ethereum address" />
+        <input type="button" value="check tokens" onclick="checkAddrTokens()" />
+    </div>
+    <br/>
+    <div>
+        <input type="button" value="list token holders" onclick="listHolders()" />
+    </div>
+</body>
+
+</html>
