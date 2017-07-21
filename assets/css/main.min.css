@@ -236,7 +236,7 @@ button:focus { outline: none }
 .btn-w-lg { width: 145px }
 .btn-w-xl { width: 180px }
 .btn-round { border-radius: 10rem }
-.btn-primary, .btn-primary:hover { background-color: #4720ad; border-color: #4720ad; color: #fff }
+.btn-primary, .btn-primary:hover { background-color: #3fc4ff; border-color: #3fc4ff; color: #fff }
 .btn-primary:hover { -webkit-box-shadow: 0 2px 10px rgba(15, 172, 243, 0.4); box-shadow: 0 2px 10px rgba(15, 172, 243, 0.4) }
 .btn-primary:focus, .btn-primary.focus { color: #fff }
 .btn-primary.disabled, .btn-primary:disabled { background-color: #0facf3; border-color: #0facf3; opacity: 0.5 }
