@@ -16,7 +16,7 @@
     <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
     <link rel="icon" href="../assets/img/favicon.png">
     <div id="shareImage" style="margin:0 auto;display:none;">
-        <img src="/assets/img/wechat.jpg" />
+        <img src="../assets/img/wechat.jpg" />
     </div>
 </head>
 
@@ -37,7 +37,7 @@
                     <li class="nav-item"><a class="nav-link " href="index.html">路印协议</a></li>
                     <li class="nav-item"><a class="nav-link" href="team.html">项目团队</a></li>
                     <li class="nav-item"><a class="nav-link" href="faq.html">常见问题</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="tokensale.html">代币发售</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="tokensale.html">代币众筹</a></li>
                 </ul>
             </div>
         </div>
@@ -47,41 +47,45 @@
     <main class="main-content">
         <header class="header header-inverse ico-header text-center">
             <div class="container p-mt">
-                <h1 class="text-warning">众筹已开始</h1>
+                <h1 class="text-warning">众筹<span id="status">已开始</span></h1>
             </div>
         </header>
         <section class="section section-inverse">
             <div class="container">
                 <div class="ico">
                     <div class="text-center">
-                        <p class="text-warning">众筹从以太坊第123个块开始，到第8888个块结束（共8000个块，约30天）</p>
+                        <div class="text-warning">众筹从以太坊第<span id="firstblock">???</span>个块开始，到第<span id="lastblock">???</span>个块结束；</div>
+                        <div class="text-warning">持续约30天（152500个块），每3天（15250个块）一个阶段；</div>
+                        <div class="text-warning">每个阶段有不同的LRC奖励，梯度下降，越早参与，奖励越多；</div>
+                        <div class="text-warning">距离众筹<span id="start_or_end">开始/结束</span>还有约：<span id="day">???</span>天<span id="hour">???</span>小时<span id="minutes">???</span>分钟。</div>
                         <ul class="list">
                             <li>
-                                <label>当前块：</label>12345</li>
+                                <label>当前块：</label><span id="block-number">???</span></li>
                             <li>
-                                <label>当前价：</label>1ETH = 5000CRC</li>
+                                <label>标准价格：</label>1 ETH = 5000 LRC</li>
                             <li>
-                                <label>当前奖励：</label>1ETH奖1200LRC</li>
+                                <label>当前奖励：</label>1 ETH 奖 <span id="bonus-value">???</span> LRC</li>
                             <li class="text-primary">
-                                <label>时间进度：</label>10个阶段，每个阶段3天</li>
+                                <label>当前实际价格：</label>1 ETH = <span id="real-price">???</span> LRC</li>
+                       
                         </ul>
                         <div class="progress_bar">
                         <div class="scale">
-                        <em></em><em></em><em></em><em></em><em><b><i>5万<br>成功</i></b></em><em><b><i>6万</i></b></em><em></em><em></em><em></em><em></em></div>
-                            <div class="sum">0</div>
+                        <em></em><em></em><em></em><em></em><em><b><i>5万<br></i></b></em><em></em><em></em><em></em><em></em><em></em><em></em><em></em></div>
+                            <div class="sum">0万</div>
                             <div class="pro-bar">
-                                <span class="progress-bar-inner" style="background-color: #3fc4ff; width: 95%;" data-value="11" data-percentage-value="95"><i class="progress_number"><b>万</b></i></span>
+                                <!-- <span id="eth-progress" class="progress-bar-inner" style="background-color: #3fc4ff; width: 0%;" data-value="0" data-percentage-value="0"><i class="progress_number"><b>万</b></i></span> -->
                             </div>
-                            <span class="sum end">12万(上限)</span>
+                            <span class="sum end">12万</span>
                         </div>
                         <div class="dashboard-box">
                             <div class="col2-2">
                                 <div class="item">
-                                    <div class="sum"><b>54300</b></div>
+                                    <div class="sum"><b id="eth-number"></b></div>
                                     <p>已收到ETH</p>
                                 </div>
                                 <div class="item">
-                                    <div class="sum"><b>123，4567</b></div>
+                                    <div class="sum"><b id="lrc-number"></b></div>
                                     <p>已售出LRC</p>
                                 </div>
                             </div>
@@ -94,7 +98,7 @@
             <div class="container">
                 <div class="lrc-adress">
                     <h4>地址</h4>
-                    <p>0x791c32652f1aad83cbcdff601aba9ba9a51db23d</p>
+                    <h5>0xEF68e7C694F40c8202821eDF525dE3782458639f</h5>
                     <span>地址二维码</span>
                     <div class="lrc-qrcode"><img src="../assets/img/qrcode.png"></div>
                 </div>
@@ -103,14 +107,14 @@
         <section class="section bg-gray">
             <div class="container">
                 <div class="lrc-search">
-                   
+
                         <h4>查询我的LRC</h4>
-                  
+
                     <div>
                         <div class="input-group">
-                            <input class="form-control">
+                            <input class="form-control" id="recipient-address">
                             <div class="input-group-btn">
-                                <button type="" class="btn btn-primary">查询</button>
+                                <button type="" class="btn btn-primary" onclick="checkLrcAmount();">查询</button>
                             </div>
                         </div>
                     </div>
@@ -145,13 +149,76 @@
     <script src="../assets/js/core.min.js"></script>
     <script src="../assets/js/main.min.js"></script>
     <script type="text/javascript">
-    $(function() {
+      $(function() {
         var progress = $(".progress-bar-inner");
         progress.each(function(i) {
-            var data = $(this).attr('data-value');
-            $(this).find("i").html(data + "万");
+        var data = $(this).attr('data-value');
+        $(this).find("i").html(data + "万");
         });
-    });
+      });
+
+      var apiKey = "1F73WEV5ZM2HKPIVCG65U5QQ427NPUG9FI";
+      var contractAddr = '0xEF68e7C694F40c8202821eDF525dE3782458639f';
+      var priceApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xa035b1fe6fc95504ec34c01f5f457ced39c26a91e52e2bdf1623238a202c7c3c&tag=latest&apikey=" + apiKey;
+      var totalEthRaisedApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xa9a18ddafd06100850696bc955220f260d8765e597e9e5c33f2862f51056aa50&tag=latest&apikey=" + apiKey;
+      var totalSupplyApi = "https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress=" + contractAddr + "&apikey=" + apiKey;
+      var blockNumberApi = "https://api.etherscan.io/api?module=proxy&action=eth_blockNumber&apikey=" + apiKey;
+
+      $(document).ready(function(){
+        setInterval(function(){
+          setValues();
+        }, 3000);
+
+        });
+
+        function setValues() {
+        $.get(blockNumberApi, function(data){
+          console.log("block number : ", data.result);
+          var num = parseInt(data.result, 16);
+          $("#block-number").text(num);
+        });
+
+        $.get(priceApi, function(data){
+          console.log("price: ", data.result);
+          var num = parseInt(data.result, 16);
+          num = num/1e+18;
+          num = num - 5000;
+          $("#bonus-value").text(num);
+        });
+
+        $.get(totalEthRaisedApi, function(data){
+          console.log("eth raised: ", data.result);
+          var num = parseInt(data.result, 16);
+          num = num/1e+18;
+          $("#eth-number").text(num);
+          var dataValue = num/10000;
+          $("#eth-progress").attr("data-value", dataValue);
+          var dataPercentage = dataValue * 100 / 12;
+          $("#eth-progress").attr("data-percentage-value", dataPercentage);
+          var progressStyle = "background-color: #3fc4ff; width: " + dataPercentage + "%;";
+          $("#eth-progress").attr("style", progressStyle);
+        });
+
+        $.get(totalSupplyApi, function(data){
+          console.log("total supply: ", data.result);
+          var num = parseInt(data.result, 10);
+          $("#lrc-number").text(num);
+        });
+
+      }
+
+
+      function checkLrcAmount() {
+        var addr = $("#recipient-address").val().trim();
+        console.log("addr: ", addr);
+        if (!addr || addr.length != 42) {
+          alert("无效的地址！");
+          return;
+        }
+        var url = "https://etherscan.io/token/" + contractAddr + "?a=" + addr;
+        window.open(url, '_blank');
+      }
+
     </script>
 </body>
 
