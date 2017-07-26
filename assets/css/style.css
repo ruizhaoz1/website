@@ -1,19 +1,12 @@
-.inline-block{ display: inline-block; }
+.inline-block { display: inline-block; }
 .thesaas-sections-split .section { margin: 30px 50px 100px; border: 1px solid #ebebeb; }
 .thesaas-sections-split .section-info { text-align: center; text-transform: uppercase; font-size: 12px; font-weight: 600; letter-spacing: 1px; padding-top: 60px; }
 .container { width: auto; }
 .topbar-block { margin-top: 20px; }
 .topbar-brand img { width: 20px; height: 20px; }
-html[lang="en"] body{ line-height: 1.4 !important; }
+html[lang="en"] body { line-height: 1.4 !important; }
 @media (max-width:768px) {
   .thesaas-sections-split .section { margin: 30px 0 100px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); }
-}
-.warning {
-  background: #ff5252!important;
-  color: #fff;
-  padding: 20px!important;
-  font-weight: 500;
-  text-align: center;
 }
 .cards { }
 .bg-white { color: #000; background: #fff; }
@@ -25,8 +18,8 @@ html[lang="en"] body{ line-height: 1.4 !important; }
 .section-header h2 { display: inline-block; color: rgba(0, 0, 0, 0.5); font-size: 1.4rem; font-weight: 200; }
 .section-header .icon { font-size: 1.3rem; margin-right: 10px; color: #000; }
 .slogn h1::first-letter { color: #ffc400; }
-.slogn h1{position: relative; }
-.slogn h1:after{ position: absolute; bottom: 0; left: 3px; width: 29px; height: 2px; border-bottom: 2px solid #ffc400; content:"" }
+.slogn h1 { position: relative; }
+.slogn h1:after { position: absolute; bottom: 0; left: 3px; width: 29px; height: 2px; border-bottom: 2px solid #ffc400; content: "" }
 .section.section-inverse, .header.header-inverse { background: #303030; }
 .section-header.section-header-inverse h2 { color: rgba(255, 255, 255, 0.7); }
 .section-header.section-header-inverse .icon { color: #fff; }
@@ -34,7 +27,7 @@ html[lang="en"] body{ line-height: 1.4 !important; }
 .logo-group span { float: left; display: block; width: 50%; padding: 10px 20px; }
 .logo-group span img { padding: 5px 0; }
 .feature .container { padding: 0; }
-.feature.feature-en .item p{ line-height: 1.4; }
+.feature.feature-en .item p { line-height: 1.4; }
 .feature .item h4 { color: inherit; }
 .feature .item:nth-child(1) { background: #303030; color: #fff }
 .feature .item:nth-child(2) { background: #ffc403; color: #000 }
@@ -98,16 +91,64 @@ html[lang="en"] body{ line-height: 1.4 !important; }
 .timeline ul li.in-view div { transform: none; visibility: visible; opacity: 1; }
 .ico-info { padding-bottom: 100px; text-align: center; }
 .ico-info h4 { font-size: 1rem; color: #29b6f6 }
-.wechat-m img{ width: 200px; height: auto; border:1px solid #000; position: relative; top:30px; }
-.site-footer .wechat-m img{ top: 0; }
-.site-footer .wechat-m{ width: 120px; display: block; margin: 20px auto; left: auto; top:auto;}
+.wechat-m img { width: 200px; height: auto; border: 1px solid #000; position: relative; top: 30px; }
+.site-footer .wechat-m img { top: 0; }
+.site-footer .wechat-m { width: 120px; display: block; margin: 20px auto; left: auto; top: auto; }
 time { display: block; font-size: 1rem; font-weight: bold; }
 #output { width: 100%; height: 80vh; overflow: scroll; padding: 0 24px 0 24px; }
 #output { height: 260px; border-radius: 10px; background-color: #303030; color: rgba(255, 255, 255, 0.7); width: 100%; overflow: scroll; text-wrap: normal; padding-top: 32px; font-size: 14px; }
-.code{ padding-bottom: 100px; }
-.ico-rule{  padding: 0 0 100px; margin: 0 auto; font-size: .8rem;  }
-.ico-rule li{ padding: 2px 2px 2px 20px; list-style: none; }
-.ico-rule li:before{ display: inline-block; position: relative; top:-1px ; left: -10px; width: 6px; height: 6px; background: #fff; border-radius: 3px; content: "" }
+.code { padding-bottom: 100px; }
+.ico-rule { padding: 0 0 100px; margin: 0 auto; font-size: .8rem; }
+.ico-rule li { padding: 2px 2px 2px 20px; list-style: none; }
+.ico-rule li:before { display: inline-block; position: relative; top: -1px; left: -10px; width: 6px; height: 6px; background: #fff; border-radius: 3px; content: "" }
+.featurecrolled .topbar.topbar-sticky { height: auto; }
+.language a { position: absolute; right: 15px; color: rgba(255, 255, 255, 0.5); }
+.language a:hover { color: #29b6f6; }
+.progress_bar { position: relative; margin: 100px 0;}
+.progress_bar .sum { display: inline-block; position: absolute; left: 0; top: 40px; line-height: 20px; color: rgba(255, 255, 255, 0.5); }
+.progress_bar .sum.end { left: auto; right: 0; }
+.progress_bar .pro-bar { background: hsl(0, 0%, 37%); box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.1) inset; height: 20px; margin-bottom: 12px; margin-top: 50px; position: relative; }
+
+.progress_bar .progress-bar-inner { background-image: -moz-linear-gradient(0deg, rgb(70, 195, 255) 0%, rgb(44, 113, 255) 99%); background-image: -webkit-linear-gradient(0deg, rgb(70, 195, 255) 0%, rgb(44, 113, 255) 99%); background-image: -ms-linear-gradient(0deg, rgb(70, 195, 255) 0%, rgb(44, 113, 255) 99%);
+display: block; width: 0; height: 100%; position: absolute; top: 0; left: 0; transition: width 1s linear 0s; animation: animate-positive 2s; }
+.progress_bar .progress-bar-inner:before { content: ""; width: 30px; height: 30px; border-radius: 60% 0 50% 50% / 50% 0 60% 50%; background-color: #2d71ff; transform: rotate(135deg); position: absolute; right: -15px; top: -45px; z-index: 1; }
+.progress_bar .progress-bar-inner i:after { content: ""; position: absolute; left: 12.5px; bottom: -38px; width: 1px; height: 30px; background: rgba(255, 255, 255, .5); }
+.progress_bar .progress-bar-inner i { position: relative; z-index: 5; top: -46px; left: 12px; font-size: 12px;font-style: normal; }
+.progress_bar .progress-bar-inner .progress_number { float: right; position: relative; top: -40px; }
+.progress_bar .scale{ position: absolute; z-index: 10; bottom: -7px;  width: 100%; }
+.progress_bar .scale em{ display:inline-block; width: 8.333%; border-right: 1px solid rgba(255, 255, 255, .2); height: 18px; }
+.progress_bar .scale em:last-child{ border-right: 0; }
+.progress_bar .scale em:nth-child(5),.progress_bar .scale em:nth-child(6){ position: relative;  }
+.progress_bar .scale em:nth-child(5) i, .progress_bar .scale em:nth-child(6) i{ display: block; width: 30px; position: absolute; z-index: 100;  bottom: -35px!important; text-align: center; font-style: normal; color: rgba(255, 255, 255, 0.5); font-weight: normal; font-size: 12px; line-height: 1; }
+.progress_bar .scale em:nth-child(5) i{right: -15px; bottom: -32px; text-align: center; }
+h4,h5 {color: #303030;}
+/*.progress_bar .scale em:nth-child(5) b:before,.progress_bar .scale em:nth-child(6) b:before{ content: ""; width: 30px; height: 30px; border-radius: 60% 0 50% 50% / 50% 0 60% 50%; background-color: #ffc403; transform: rotate(-45deg); position: absolute; right: -16px; bottom:-45px; z-index: 1; }*/
+@-webkit-keyframes animate-positive {
+0% { width: 0%; }
+}
+@keyframes animate-positive {
+0% { width: 0%; }
+}
+.ico { max-width: 600px; margin: 50px auto; }
+.ico .list { margin: 0; padding: 0; list-style: none; border: 1px solid rgba(255, 255, 255, .1) }
+.ico .list li { border-bottom: 1px solid rgba(255, 255, 255, .1); padding: 5px 10px; }
+.ico .list li:last-child { border: 0; }
+.lrc-adress { margin: 50px 0; text-align: center; }
+.lrc-search { margin: 50px auto; max-width: 600px; text-align: center; }
+.col2-2 .item, .justified2-2 li { width: 50%; position: relative; float: left; }
+.dashboard-box { border: 1px solid rgba(255, 255, 255, .1); padding: 20px 0; overflow: hidden; }
+.dashboard-box .item { position: relative; text-align: center; }
+.dashboard-box .item:after { position: absolute; right: -8px; top: 13px; width: 1px; height: 60px; border-right: 1px solid rgba(255, 255, 255, .1); content: ""; }
+.dashboard-box .item:last-child:after { width: 0; content: ""; border: 0; }
+.dashboard-box .item .sum { }
+.dashboard-box .item .sum b { position: relative; top: -2px; padding: 0 5px 0 0; font-size: 48px; color: #29b6f6; vertical-align: middle; }
+.dashboard-box .item .sum small { display: inline-block; padding: 0 0 5px 0; font-size: 20px; font-weight: bold; color: #29b6f6; vertical-align: middle; }
+.dashboard-box .item p { margin: 10px 0 0; color: rgba(255, 255, 255, .3); }
+.text-warning{ color:#ffc403 !important}
+.section h4{ color: #000; }
+.lrc-qrcode{ width:240px; height: 240px; margin:auto;}
+.lrc-qrcode img{ width: 100%; }
+.header.ico-header{ padding: 100px 0 0 0; }
 @media screen and (max-width:768px) {
   .timeline ul li:nth-child(even) div { left: 45px; }
   .timeline ul { margin: 0 auto; max-width: 420px; padding: 0; }
@@ -116,6 +157,7 @@ time { display: block; font-size: 1rem; font-weight: bold; }
   .p-intro, .slogn { padding: 0 20px; }
 }
 @media (min-width:1024px) {
+ .header.ico-header{ padding-top:100px; }
   #output { width: 100%; height: 80vh; overflow: scroll; padding: 0 24px 0 24px; }
   .section-header { text-align: left; margin: 0 auto 70px; }
   .container { max-width: 1200px; margin: auto; padding: 0 15px; }
@@ -160,10 +202,16 @@ time { display: block; font-size: 1rem; font-weight: bold; }
   .team-loopring .list { max-width: 800px; margin: auto; }
   .team-loopring .list li b { color: rgba(0, 0, 0, 1); font-weight: 400; display: inline-block; width: 120px; text-align: right; padding-right: 5px; }
   .ico-info h4 { font-size: 3rem; color: #29b6f6 }
-  .site-footer .wechat-m{ display: inline-block; position:relative; left: 50px; top: -25px; margin:40px 0 0}
-  .site-footer .content{ display: inline-block; padding: 30px 0 0 }
-  .site-footer .wechat-m img{   width: 80px; top: 0; }
+  .site-footer .wechat-m { display: inline-block; position: relative; left: 50px; top: -25px; margin: 40px 0 0 }
+  .site-footer .content { display: inline-block; padding: 30px 0 0 }
+  .site-footer .wechat-m img { width: 80px; top: 0; }
+  .address-strong {color:#ff5252; background:rgba(0,0,0,.04); padding-top:5px; padding-bottom:5px;}
+  .how-to {font-weight: 700; }
+  .warning {
+  background: #ff5252!important;
+  color: #fff;
+  padding: 20px!important;
+  font-weight: 500;
+  text-align: center;
 }
-.featurecrolled .topbar.topbar-sticky { height: auto; }
-.language a{ position: absolute; right: 15px; color: rgba(255, 255, 255, 0.5);  }
-.language a:hover{ color: #29b6f6;}
+}
