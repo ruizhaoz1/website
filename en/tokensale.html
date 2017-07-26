@@ -24,7 +24,7 @@
     <!-- Topbar -->
     <nav class="topbar topbar-inverse topbar-expand-md">
       <div class="container">
-        <div class="language"><a href="../en/index.html">English</a></div>
+        <div class="language"><a href="../cn/tokensale.html">中文</a></div>
         <div class="topbar-block">
           <button class="topbar-toggler"><i></i><i></i><i></i></button>
           <a class="topbar-brand" href="index.html">
@@ -35,9 +35,9 @@
         <div class="topbar-block">
           <ul class="topbar-nav nav">
                     <li class="nav-item"><a class="nav-link " href="index.html">Loopring</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="team.html">Team</a></li>
+                    <li class="nav-item"><a class="nav-link " href="team.html">Team</a></li>
                     <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tokensale.html">Token Sale</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="tokensale.html">Token Sale</a></li>
           </ul>
         </div>
       </div>
@@ -47,7 +47,7 @@
     <main class="main-content">
       <header class="header header-inverse ico-header text-center">
         <div class="container p-mt">
-          <h1 class="text-warning" id="head-started">众筹<span id="status">已开始</span></h1>
+          <h1 class="text-warning" id="head-started"><span id="status">Not Started Yet</span></h1>
         </div>
       </header>
       <section class="section section-inverse">
@@ -56,9 +56,9 @@
             <div class="text-center">
               <div id="memo-div">
                 <div class="text-warning" id="head-text"></div>
-                <div class="text-warning">持续约30天（152500个块）, 每3天（15250个块）一个阶段; </div>
-                <div class="text-warning">每个阶段有不同的LRC奖励, 梯度下降, 越早参与, 奖励越多; </div>
-                <div class="text-warning">距离众筹<span id="start_or_end">开始/结束</span>还有约：<span id="day">???</span> days <span id="hour">???</span> hours <span id="minutes">???</span> minutes.</div>
+                <div class="text-warning">Last 30 days (152500 blocks) with 10 3-day (15250 blocks) phases; </div>
+                <div class="text-warning">Each phase has a different bonus setting to reward early participants; </div>
+                <div class="text-warning"><span id="day">???</span> days <span id="hour">???</span> hours <span id="minutes">???</span> minutes remains <span id="start_or_end">to start</span>.</div>
               </div>
               <ul class="list">
                 <li>
@@ -541,7 +541,7 @@ contract LoopringToken is StandardToken {
          var progress = $(".progress-bar-inner");
          progress.each(function(i) {
              var data = $(this).attr('data-value');
-             $(this).find("i").html(data + "万");
+             $(this).find("i").html(data + "0K");
          });
      });
 
@@ -619,8 +619,8 @@ contract LoopringToken is StandardToken {
 
          var nowSecs = new Date().getTime() / 1000;
          if (firstblock == 0) {
-             $("span#status").text("尚未开始");
-             $("span#start_or_end").text("开始");
+             $("span#status").text("Not Started Yet");
+             $("span#start_or_end").text("to start");
              caculateInterval(nowSecs, startTimeSecs);
 
              $.get(firstBlockApi, function(data){
@@ -630,16 +630,16 @@ contract LoopringToken is StandardToken {
                      firstblock = num;
                      lastblock = firstblock + 152500;
                      console.log("first block: ", firstblock, ", last block: ", lastblock);
-                     $("#head-text").text("众筹从以太坊第" + firstblock + "个块开始, 到第" + lastblock + "个块结束; ");
+                     $("#head-text").text("Token sale starts from block#" + firstblock + ", ends in block#" + lastblock + ".");
                  }
              });
          } else {
              if (isSaleEnd()) {
-                 $("span#status").text("已结束");
+                 $("span#status").text("remaining");
                  $("#memo-div").hide();
              } else {
-                 $("span#status").text("已开始");
-                 $("span#start_or_end").text("结束");
+                 $("span#status").text("In Progress");
+                 $("span#start_or_end").text("to end");
                  var remainingSecs = Math.round((currentBlockNumber - firstblock) * daySecs / 5082);
                  caculateInterval(nowSecs, nowSecs + remainingSecs);
              }
@@ -661,7 +661,7 @@ contract LoopringToken is StandardToken {
          var addr = $("#recipient-address").val().trim();
          console.log("addr: ", addr);
          if (!addr || addr.length != 42) {
-             alert("无效的地址！");
+             alert("Invalid address.");
              return;
          }
          var url = "https://etherscan.io/token/" + contractAddr + "?a=" + addr;
