@@ -53,7 +53,7 @@
     <main class="main-content">
       <header class="header header-inverse ico-header text-center">
         <div class="container p-mt">
-          <h1 class="text-warning" id="head-started"><span id="status">Not Started Yet</span></h1>
+          <h1 class="text-warning" id="head-started"><span id="status"></span></h1>
         </div>
       </header>
       <section class="section section-inverse">
@@ -576,8 +576,8 @@ contract LoopringToken is StandardToken {
      });
 
      var apiKey = "1F73WEV5ZM2HKPIVCG65U5QQ427NPUG9FI";
-     //var contractAddr = '0xEF68e7C694F40c8202821eDF525dE3782458639f';
-     var contractAddr = '0x8c9816AEB886874Dd01915Cd23747384224548B1';
+     var contractAddr = '0xEF68e7C694F40c8202821eDF525dE3782458639f';
+     // var contractAddr = '0x8c9816AEB886874Dd01915Cd23747384224548B1';
 
      var priceApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xa035b1fe6fc95504ec34c01f5f457ced39c26a91e52e2bdf1623238a202c7c3c&tag=latest&apikey=" + apiKey;
      var totalEthRaisedApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xa9a18ddafd06100850696bc955220f260d8765e597e9e5c33f2862f51056aa50&tag=latest&apikey=" + apiKey;
