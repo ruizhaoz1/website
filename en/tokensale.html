@@ -18,6 +18,12 @@
     <div id="shareImage" style="margin:0 auto;display:none;">
       <img src="../assets/img/wechat.jpg" />
     </div>
+
+    <style>
+      .progress_bar .progress-bar-inner:before {
+        background-color: transparent;
+      }
+    </style>
   </head>
 
   <body>
@@ -76,7 +82,7 @@
                   <em></em><em></em><em></em><em></em><em><b><i>50K<br></i></b></em><em></em><em></em><em></em><em></em><em></em><em></em><em></em></div>
                 <div class="sum">0</div>
                 <div class="pro-bar">
-                  <!-- <span id="eth-progress" class="progress-bar-inner" style="background-color: #3fc4ff; width: 0%;" data-value="0" data-percentage-value="0"><i class="progress_number"><b>万</b></i></span> -->
+                  <span id="eth-progress" class="progress-bar-inner" style="background-color: #3fc4ff; width: 0%;" data-value="0" data-percentage-value="0"></span>
                 </div>
                 <span class="sum end">120K</span>
               </div>
@@ -110,7 +116,7 @@
              <div class="how-to">6. Do not make any LRC transfer to accounts you don't control until Sept. 2nd - you may lose LRC that will be issued later on other blockchain; </div>
              <div class="how-to">7. You confirm that you are not a US or Singapore citizen/resident;</div>
             <div class="how-to">8. You can check your LRC balance with the tool below.</div>
-           
+
             <br><br>
             <span>Address</span>
             <h5 class="address-strong">0xEF68e7C694F40c8202821eDF525dE3782458639f</h5>
@@ -242,14 +248,14 @@ contract LoopringToken is StandardToken {
     ];
 
     uint public constant NUM_OF_PHASE = 10;
-  
+
     /// Each phase contains exactly 15250 Ethereum blocks, which is roughly 3 days,
     /// which makes this 10-phase sale period roughly 30 days.
     /// See https://www.ethereum.org/crowdsale#scheduling-a-call
     uint16 public constant BLOCKS_PER_PHASE = 15250;
 
     /// This is where we hold ETH during this token sale. We will not transfer any Ether
-    /// out of this address before we invocate the `close` function to finalize the sale. 
+    /// out of this address before we invocate the `close` function to finalize the sale.
     /// This promise is not guanranteed by smart contract by can be verified with public
     /// Ethereum transactions data available on several blockchain browsers.
     /// This is the only address from which `start` and `close` can be invocated.
@@ -265,7 +271,7 @@ contract LoopringToken is StandardToken {
     /// is managed by the project team and is issued directly to `target`.
     bool public unsoldTokenIssued = false;
 
-    /// Minimum amount of funds to be raised for the sale to succeed. 
+    /// Minimum amount of funds to be raised for the sale to succeed.
     uint256 public constant GOAL = 50000 ether;
 
     /// Maximum amount of fund to be raised, the sale ends on reaching this amount.
@@ -283,7 +289,7 @@ contract LoopringToken is StandardToken {
     /// Issue event index starting from 0.
     uint public issueIndex = 0;
 
-    /* 
+    /*
      * EVENTS
      */
 
@@ -352,8 +358,8 @@ contract LoopringToken is StandardToken {
     }
 
     /**
-     * CONSTRUCTOR 
-     * 
+     * CONSTRUCTOR
+     *
      * @dev Initialize the Loopring Token
      * @param _target The escrow account address, all ethers will
      * be sent to this address.
@@ -426,7 +432,7 @@ contract LoopringToken is StandardToken {
     /*
      * INTERNAL FUNCTIONS
      */
-  
+
     /// @dev Compute the amount of LRC token that can be purchased.
     /// @param ethAmount Amount of Ether to purchase LRC.
     /// @return Amount of LRC token to purchase
@@ -471,7 +477,7 @@ contract LoopringToken is StandardToken {
         if (unsoldTokenIssued) {
             InvalidState("Unsold token has been issued already");
         } else {
-            // Add another safe guard 
+            // Add another safe guard
             require(totalEthReceived >= GOAL);
 
             uint level = totalEthReceived.sub(GOAL).div(10000 ether);
@@ -483,7 +489,7 @@ contract LoopringToken is StandardToken {
 
 
             // Calculate the `unsoldToken` to be issued, the amount of `unsoldToken`
-            // is based on the issued amount, that is the `totalSupply`, during 
+            // is based on the issued amount, that is the `totalSupply`, during
             // the sale:
             //                   totalSupply
             //   unsoldToken = --------------- * r
@@ -501,7 +507,7 @@ contract LoopringToken is StandardToken {
                 0,
                 unsoldToken
             );
-            
+
             unsoldTokenIssued = true;
         }
     }
@@ -570,8 +576,8 @@ contract LoopringToken is StandardToken {
      });
 
      var apiKey = "1F73WEV5ZM2HKPIVCG65U5QQ427NPUG9FI";
-     var contractAddr = '0xEF68e7C694F40c8202821eDF525dE3782458639f';
-     // var contractAddr = '0x8c9816AEB886874Dd01915Cd23747384224548B1';
+     //var contractAddr = '0xEF68e7C694F40c8202821eDF525dE3782458639f';
+     var contractAddr = '0x8c9816AEB886874Dd01915Cd23747384224548B1';
 
      var priceApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xa035b1fe6fc95504ec34c01f5f457ced39c26a91e52e2bdf1623238a202c7c3c&tag=latest&apikey=" + apiKey;
      var totalEthRaisedApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xa9a18ddafd06100850696bc955220f260d8765e597e9e5c33f2862f51056aa50&tag=latest&apikey=" + apiKey;
@@ -580,6 +586,7 @@ contract LoopringToken is StandardToken {
      var firstBlockApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xe85365d5cccf7a50eb3089b148421fc4071a14ecdc0132b14221a69229be01ea&tag=latest&apikey=" + apiKey;
 
      var firstblock = 0;
+     var totalBlockCount = 152500;
      var totalEth = 0;
      var startTime = new Date('2017-08-01T13:00:00Z');
      var startTimeSecs = startTime.getTime() / 1000;
@@ -594,7 +601,9 @@ contract LoopringToken is StandardToken {
      }
 
      // execute on start.
-     setValues();
+     for (var i = 0; i < 3; i ++) {
+         setValues();
+     }
 
      $(document).ready(function(){
          setInterval(function(){
@@ -652,9 +661,12 @@ contract LoopringToken is StandardToken {
                  var num = parseInt(data.result, 16);
                  if (num > 0) {
                      firstblock = num;
-                     lastblock = firstblock + 152500;
-                     console.log("first block: ", firstblock, ", last block: ", lastblock);
+                     var lastblock = firstblock + totalBlockCount;
                      $("#head-text").text("Token sale starts from block#" + firstblock + ", ends in block#" + lastblock + ".");
+                     $("span#status").text("In Progress");
+                     $("span#start_or_end").text("to end");
+                     var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);
+                     caculateInterval(nowSecs, nowSecs + remainingSecs);
                  }
              });
          } else {
@@ -664,7 +676,7 @@ contract LoopringToken is StandardToken {
              } else {
                  $("span#status").text("In Progress");
                  $("span#start_or_end").text("to end");
-                 var remainingSecs = Math.round((currentBlockNumber - firstblock) * daySecs / 5082);
+                 var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);
                  caculateInterval(nowSecs, nowSecs + remainingSecs);
              }
 
@@ -686,6 +698,27 @@ contract LoopringToken is StandardToken {
          console.log("addr: ", addr);
          if (!addr || addr.length != 42) {
              alert("Invalid address.");
+             return;
+         }
+         var url = "https://etherscan.io/token/" + contractAddr + "?a=" + addr;
+         console.log("url:", url);
+         window.open(url, '_blank');
+     }
+
+    </script>
+  </body>
+
+</html>
+xt(days);
+         $("span#hour").text(hours);
+         $("span#minutes").text(minutes);
+     }
+
+     function checkLrcAmount() {
+         var addr = $("#recipient-address").val().trim();
+         console.log("addr: ", addr);
+         if (!addr || addr.length != 42) {
+             alert("无效的地址！");
              return;
          }
          var url = "https://etherscan.io/token/" + contractAddr + "?a=" + addr;
