@@ -18,6 +18,12 @@
     <div id="shareImage" style="margin:0 auto;display:none;">
       <img src="../assets/img/wechat.jpg" />
     </div>
+
+    <style>
+      .progress_bar .progress-bar-inner:before {
+        background-color: transparent;
+      }
+    </style>
   </head>
 
   <body>
@@ -76,7 +82,7 @@
                   <em></em><em></em><em></em><em></em><em><b><i>5万<br></i></b></em><em></em><em></em><em></em><em></em><em></em><em></em><em></em></div>
                 <div class="sum">0万</div>
                 <div class="pro-bar">
-                  <!-- <span id="eth-progress" class="progress-bar-inner" style="background-color: #3fc4ff; width: 0%;" data-value="0" data-percentage-value="0"><i class="progress_number"><b>万</b></i></span> -->
+                  <span id="eth-progress" class="progress-bar-inner" style="background-color: #3fc4ff; width: 0%;" data-value="0" data-percentage-value="0"></span>
                 </div>
                 <span class="sum end">12万</span>
               </div>
@@ -106,7 +112,7 @@
             <div class="how-to">2. 切勿从交易所直接提现到智能合约地址 - 您的LRC会被交易所拥有，我们无法为您提供任何支持; </div>
             <div class="how-to">3. 请将转账的油费（gas）设为 <bold>90000</bold>（没用完的会返回）； </div>
             <div class="how-to">4. 最少参与的金额为0.01ETH，不包含油费（gas）； </div>
-            <div class="how-to">5. 转账成功后LRC实时发放，可以通过本网页下面的小工具查询； </div>
+            <div class="how-to">5. 转账成功后LRC将实时发行到转行的源地址，您可以通过本网页下面的小工具查询； </div>
              <div class="how-to">6. 我们拒绝美国和新加坡的居民和公民参与代币众售。如果您属于该类人群，请不要参与！ </div>
             <div class="how-to">7. 九月二日前切勿进行LRC转账，否则您可能无法得到后续在其它公有链上的LRC代币。 </div>
             <br><br>
@@ -224,14 +230,14 @@ contract LoopringToken is StandardToken {
     ];
 
     uint public constant NUM_OF_PHASE = 10;
-  
+
     /// Each phase contains exactly 15250 Ethereum blocks, which is roughly 3 days,
     /// which makes this 10-phase sale period roughly 30 days.
     /// See https://www.ethereum.org/crowdsale#scheduling-a-call
     uint16 public constant BLOCKS_PER_PHASE = 15250;
 
     /// This is where we hold ETH during this token sale. We will not transfer any Ether
-    /// out of this address before we invocate the `close` function to finalize the sale. 
+    /// out of this address before we invocate the `close` function to finalize the sale.
     /// This promise is not guanranteed by smart contract by can be verified with public
     /// Ethereum transactions data available on several blockchain browsers.
     /// This is the only address from which `start` and `close` can be invocated.
@@ -247,7 +253,7 @@ contract LoopringToken is StandardToken {
     /// is managed by the project team and is issued directly to `target`.
     bool public unsoldTokenIssued = false;
 
-    /// Minimum amount of funds to be raised for the sale to succeed. 
+    /// Minimum amount of funds to be raised for the sale to succeed.
     uint256 public constant GOAL = 50000 ether;
 
     /// Maximum amount of fund to be raised, the sale ends on reaching this amount.
@@ -265,7 +271,7 @@ contract LoopringToken is StandardToken {
     /// Issue event index starting from 0.
     uint public issueIndex = 0;
 
-    /* 
+    /*
      * EVENTS
      */
 
@@ -334,8 +340,8 @@ contract LoopringToken is StandardToken {
     }
 
     /**
-     * CONSTRUCTOR 
-     * 
+     * CONSTRUCTOR
+     *
      * @dev Initialize the Loopring Token
      * @param _target The escrow account address, all ethers will
      * be sent to this address.
@@ -408,7 +414,7 @@ contract LoopringToken is StandardToken {
     /*
      * INTERNAL FUNCTIONS
      */
-  
+
     /// @dev Compute the amount of LRC token that can be purchased.
     /// @param ethAmount Amount of Ether to purchase LRC.
     /// @return Amount of LRC token to purchase
@@ -453,7 +459,7 @@ contract LoopringToken is StandardToken {
         if (unsoldTokenIssued) {
             InvalidState("Unsold token has been issued already");
         } else {
-            // Add another safe guard 
+            // Add another safe guard
             require(totalEthReceived >= GOAL);
 
             uint level = totalEthReceived.sub(GOAL).div(10000 ether);
@@ -465,7 +471,7 @@ contract LoopringToken is StandardToken {
 
 
             // Calculate the `unsoldToken` to be issued, the amount of `unsoldToken`
-            // is based on the issued amount, that is the `totalSupply`, during 
+            // is based on the issued amount, that is the `totalSupply`, during
             // the sale:
             //                   totalSupply
             //   unsoldToken = --------------- * r
@@ -483,7 +489,7 @@ contract LoopringToken is StandardToken {
                 0,
                 unsoldToken
             );
-            
+
             unsoldTokenIssued = true;
         }
     }
@@ -553,7 +559,7 @@ contract LoopringToken is StandardToken {
 
      var apiKey = "1F73WEV5ZM2HKPIVCG65U5QQ427NPUG9FI";
      var contractAddr = '0xEF68e7C694F40c8202821eDF525dE3782458639f';
-     // var contractAddr = '0x8c9816AEB886874Dd01915Cd23747384224548B1';
+     //var contractAddr = '0x8c9816AEB886874Dd01915Cd23747384224548B1';
 
      var priceApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xa035b1fe6fc95504ec34c01f5f457ced39c26a91e52e2bdf1623238a202c7c3c&tag=latest&apikey=" + apiKey;
      var totalEthRaisedApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xa9a18ddafd06100850696bc955220f260d8765e597e9e5c33f2862f51056aa50&tag=latest&apikey=" + apiKey;
@@ -562,6 +568,7 @@ contract LoopringToken is StandardToken {
      var firstBlockApi = "https://api.etherscan.io/api?module=proxy&action=eth_call&to=" + contractAddr + "&data=0xe85365d5cccf7a50eb3089b148421fc4071a14ecdc0132b14221a69229be01ea&tag=latest&apikey=" + apiKey;
 
      var firstblock = 0;
+     var totalBlockCount = 152500;
      var totalEth = 0;
      var startTime = new Date('2017-08-01T21:00:00');
      var startTimeSecs = startTime.getTime() / 1000;
@@ -572,11 +579,13 @@ contract LoopringToken is StandardToken {
      var minuteSecs = 60;
 
      function isSaleEnd() {
-         return totalEth >= 120000 || (currentBlockNumber - firstblock) > 152500;
+         return totalEth >= 120000 || (currentBlockNumber - firstblock) > totalBlockCount;
      }
 
      // execute on start.
-     setValues();
+     for (var i = 0; i < 3; i ++) {
+         setValues();
+     }
 
      $(document).ready(function(){
          setInterval(function(){
@@ -611,6 +620,7 @@ contract LoopringToken is StandardToken {
              var dataValue = num/10000;
              $("#eth-progress").attr("data-value", dataValue);
              var dataPercentage = dataValue * 100 / 12;
+             //dataPercentage = 30;
              $("#eth-progress").attr("data-percentage-value", dataPercentage);
              var progressStyle = "background-color: #3fc4ff; width: " + dataPercentage + "%;";
              $("#eth-progress").attr("style", progressStyle);
@@ -634,9 +644,12 @@ contract LoopringToken is StandardToken {
                  var num = parseInt(data.result, 16);
                  if (num > 0) {
                      firstblock = num;
-                     lastblock = firstblock + 152500;
-                     console.log("first block: ", firstblock, ", last block: ", lastblock);
+                     var lastblock = firstblock + totalBlockCount;
                      $("#head-text").text("众售从以太坊第" + firstblock + "个块开始，到第" + lastblock + "个块结束；");
+                     $("span#status").text("已开始");
+                     $("span#start_or_end").text("结束");
+                     var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);
+                     caculateInterval(nowSecs, nowSecs + remainingSecs);
                  }
              });
          } else {
@@ -646,7 +659,7 @@ contract LoopringToken is StandardToken {
              } else {
                  $("span#status").text("已开始");
                  $("span#start_or_end").text("结束");
-                 var remainingSecs = Math.round((currentBlockNumber - firstblock) * daySecs / 5082);
+                 var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);
                  caculateInterval(nowSecs, nowSecs + remainingSecs);
              }
 
