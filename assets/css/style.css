@@ -143,7 +143,7 @@ h4,h5 {color: #303030;}
 .dashboard-box .item:after { position: absolute; right: -8px; top: 13px; width: 1px; height: 60px; border-right: 1px solid rgba(255, 255, 255, .1); content: ""; }
 .dashboard-box .item:last-child:after { width: 0; content: ""; border: 0; }
 .dashboard-box .item .sum { }
-.dashboard-box .item .sum b { position: relative; top: -2px; padding: 0 5px 0 0; font-size: 40px; color: #29b6f6; vertical-align: middle; }
+.dashboard-box .item .sum b { position: relative; top: -2px; padding: 0 5px 0 0; font-size: 32px; color: #29b6f6; vertical-align: middle; }
 .dashboard-box .item .sum small { display: inline-block; padding: 0 0 5px 0; font-size: 20px; font-weight: bold; color: #29b6f6; vertical-align: middle; }
 .dashboard-box .item p {color: rgba(255, 255, 255, .7); }
 .text-warning{ color:#ffc403 !important}
