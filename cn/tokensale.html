@@ -58,10 +58,9 @@
         <section class="section section-inverse">
             <div class="container">
                 <div class="ico">
-                    <div class="text-center">
-
+                    <div class="text-center" >
                          <div class="dashboard-box">
-                            <div class="col2-2">
+                            <div class="col2-2"  id="memo-div">
                                 <div class="item">
                                     <div class="sum"><b><span id="day">???</span>天<span id="hour">???</span>小时<span id="minutes">???</span>分</b></div>
                                     <p>距离众售<span id="start_or_end">结束</span>还有</p>
@@ -74,7 +73,7 @@
                         </div>
 
 
-                        <div id="memo-div">
+                        <div>
                             <div class="text-warning" id="head-text"></div>
                             <div class="text-warning">
                                 <div class="time-headline"></div>
@@ -114,7 +113,7 @@
                     <h4>如何参与？</h4>
                     <p>ICO平台：您可以通过我们的合作伙伴 <a href="https://ico.token.im/loopring" target="_blank">imToken</a>， <a href="https://www.ico365.com/pitch/index/289" target="_blank">ICO365</a>，<a href="http://www.icorace.com/product/detail/4" target="_blank">ICORace</a>，<a href="https://tokencapital.io/#!/index/projectInvest/9" target="_blank">TokenCapital</a> 和 <a href="https://aimwise.org/projectdetail.html?id=14" target="_blank">AIMWise</a> 参与；</p>
                     <p class="how-to">官网：您可从您的以太坊钱包中直接将ETH转账到我们的众售智能合约地址，转账方式和普通转账一样，但需要将gas设为90000。</p>
-                    
+
                     <br>
                     <br>
                     <span>地址</span>
@@ -598,7 +597,7 @@ contract LoopringToken is StandardToken {
     var firstblock = 0;
     var totalBlockCount = 152500;
     var totalEth = 0;
-    var startTime = new Date('2017-08-01T21:00:00');
+    var startTime = new Date('2017-08-01T13:00:00Z');
     var startTimeSecs = startTime.getTime() / 1000;
     var currentBlockNumber = 0;
 
