@@ -604,10 +604,15 @@ contract LoopringToken is StandardToken {
          return totalEth >= 120000 || (currentBlockNumber - firstblock) > 152500;
      }
 
-     // execute on start.
-     for (var i = 0; i < 3; i ++) {
-         setValues();
+     function isSaleStarted() {
+         return firstblock > 0 && currentBlockNumber >= firstblock;
      }
+
+     // execute on start.
+     setValues();
+     setTimeout(function(){setValues();}, 1000);
+     setTimeout(function(){setValues();}, 3000);
+     setTimeout(function(){setValues();}, 5000);
 
      $(document).ready(function(){
          setInterval(function(){
@@ -655,35 +660,31 @@ contract LoopringToken is StandardToken {
          });
 
          var nowSecs = new Date().getTime() / 1000;
-         if (firstblock == 0) {
-             $("span#status").text("Not Started Yet");
-             $("span#start_or_end").text("to start");
-             caculateInterval(nowSecs, startTimeSecs);
-
-             $.get(firstBlockApi, function(data){
-                 console.log("firstBlockApi: ", data.result);
-                 var num = parseInt(data.result, 16);
-                 if (num > 0) {
-                     firstblock = num;
-                     var lastblock = firstblock + totalBlockCount;
-                     $("#head-text").text("Token sale starts from block#" + firstblock + ", ends in block#" + lastblock + ".");
-                     $("span#status").text("In Progress");
-                     $("span#start_or_end").text("to end");
-                     var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);
-                     caculateInterval(nowSecs, nowSecs + remainingSecs);
-                 }
-             });
-         } else {
+         if (isSaleStarted()) {
              if (isSaleEnd()) {
                  $("span#status").text("remaining");
                  $("#memo-div").hide();
              } else {
+                 var lastblock = firstblock + totalBlockCount;
+                 $("#head-text").text("Token sale starts from block#" + firstblock + ", ends in block#" + lastblock + ".");
+
                  $("span#status").text("In Progress");
                  $("span#start_or_end").text("to end");
                  var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);
                  caculateInterval(nowSecs, nowSecs + remainingSecs);
              }
+         } else {
+             $.get(firstBlockApi, function(data) {
+                 console.log("firstBlockApi: ", data.result);
+                 var num = parseInt(data.result, 16);
+                 if (num > 0) {
+                     firstblock = num;
+                 }
+             });
 
+             $("span#status").text("Not Started Yet");
+             $("span#start_or_end").text("to start");
+             caculateInterval(nowSecs, startTimeSecs);
          }
      }
 
