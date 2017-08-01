@@ -194,7 +194,7 @@
                     <li>众售结束后，如果售得ETH不少于11万但少于12万，未售部分占比52.5%；</li>
                     <li>众售结束后，如果售得ETH不少于12万，未售部分占比50%。</li>
                     <li>售出后剩余LRC，项目团队和社区贡献者按照2:3的比例分配，项目团队锁定4年</li>
-                   
+
                     <li>众售规则以智能合约代码为最终标准。网页和其它宣传资料为辅助参考。</li>
                 </ul>
             </div>
@@ -699,6 +699,14 @@ contract LoopringToken is StandardToken {
         var days = Math.floor(intervalSecs / daySecs);
         var hours = Math.floor((intervalSecs - days * daySecs) / hourSecs);
         var minutes = Math.floor((intervalSecs - days * daySecs - hours * hourSecs) / minuteSecs);
+
+        if(beginSecs > endSecs) {
+            intervalSecs = 0;
+            days = 0;
+            hours = 0;
+            minutes = 0;
+        }
+
         $("span#day").text(days);
         $("span#hour").text(hours);
         $("span#minutes").text(minutes);
