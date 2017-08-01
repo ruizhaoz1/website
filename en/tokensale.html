@@ -40,10 +40,10 @@
         </div>
         <div class="topbar-block">
           <ul class="topbar-nav nav">
-                    <li class="nav-item"><a class="nav-link " href="index.html">Loopring</a></li>
-                    <li class="nav-item"><a class="nav-link " href="team.html">Team</a></li>
-                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="tokensale.html">Token Sale</a></li>
+            <li class="nav-item"><a class="nav-link " href="index.html">Loopring</a></li>
+            <li class="nav-item"><a class="nav-link " href="team.html">Team</a></li>
+            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link active" href="tokensale.html">Token Sale</a></li>
           </ul>
         </div>
       </div>
@@ -78,7 +78,7 @@
 
               </ul>
 
-              
+
               <div class="progress_bar">
                 <div class="scale">
                   <em></em><em></em><em></em><em></em><em><b><i>50K<br></i></b></em><em></em><em></em><em></em><em></em><em></em><em></em><em></em></div>
@@ -143,7 +143,7 @@
             </div>
              <div class="input-group">
              <div class="trailing0">Note: 1LRC will be displayed as 1,000,000,000,000,000,000 (18 trailing 0s).</div>
-          
+
              </div>
           </div>
         </div>
@@ -157,7 +157,7 @@
                         <h2>Angel</h2>
                     </div>
                 </header>
-                <div class="logo-group clearfix">   
+                <div class="logo-group clearfix">
                         <span><img src="../assets/img/qtum_en.png"></span>
                       <span><img src="../assets/img/logo4.png"></span>
                       <!-- <span><img src="../assets/img/xinghe.png"></span> -->
@@ -702,27 +702,6 @@ contract LoopringToken is StandardToken {
          console.log("addr: ", addr);
          if (!addr || addr.length != 42) {
              alert("Invalid address.");
-             return;
-         }
-         var url = "https://etherscan.io/token/" + contractAddr + "?a=" + addr;
-         console.log("url:", url);
-         window.open(url, '_blank');
-     }
-
-    </script>
-  </body>
-
-</html>
-xt(days);
-         $("span#hour").text(hours);
-         $("span#minutes").text(minutes);
-     }
-
-     function checkLrcAmount() {
-         var addr = $("#recipient-address").val().trim();
-         console.log("addr: ", addr);
-         if (!addr || addr.length != 42) {
-             alert("无效的地址！");
              return;
          }
          var url = "https://etherscan.io/token/" + contractAddr + "?a=" + addr;
