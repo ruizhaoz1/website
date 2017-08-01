@@ -81,7 +81,7 @@
 
               <div class="progress_bar">
                 <div class="scale">
-                  <em></em><em></em><em></em><em></em><em></div>
+                  <em></em><em></em><em></em><em></em><em><b><i>50K<br></i></b></em><em></em><em></em><em></em><em></em><em></em><em></em><em></em></div>
                 <div class="sum">0</div>
                 <div class="pro-bar">
                   <span id="eth-progress" class="progress-bar-inner" style="background-color: #3fc4ff; width: 0%;" data-value="0" data-percentage-value="0"></span>
@@ -646,7 +646,7 @@ contract LoopringToken is StandardToken {
              totalEth = num;
              var dataValue = num/10000;
              $("#eth-progress").attr("data-value", dataValue);
-             var dataPercentage = dataValue * 100 / 5;
+             var dataPercentage = dataValue * 100 / 12;
              $("#eth-progress").attr("data-percentage-value", dataPercentage);
              var progressStyle = "background-color: #3fc4ff; width: " + dataPercentage + "%;";
              $("#eth-progress").attr("style", progressStyle);
