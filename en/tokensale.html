@@ -655,8 +655,8 @@ contract LoopringToken is StandardToken {
          $.get(totalSupplyApi, function(data){
              console.log("total supply: ", data.result);
              var num = parseInt(data.result, 10);
-             num = Math.round(num/1e+18);
-             $("#lrc-number").text(num);
+             num = Math.round(num/1e+21);
+             $("#lrc-number").text(num+"K");
          });
 
          var nowSecs = new Date().getTime() / 1000;
