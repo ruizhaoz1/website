@@ -667,14 +667,13 @@ contract LoopringToken is StandardToken {
 
         var nowSecs = new Date().getTime() / 1000;
 
+        var lastblock = firstblock + totalBlockCount;
+                $("#head-text").text("众售从以太坊第" + firstblock + "个块开始，到第" + lastblock + "个块结束；");
         if (isSaleStarted()) {
             if (isSaleEnd()) {
                 $("span#status").text("已结束");
                 $("#memo-div").hide();
             } else {
-                var lastblock = firstblock + totalBlockCount;
-                $("#head-text").text("众售从以太坊第" + firstblock + "个块开始，到第" + lastblock + "个块结束；");
-
                 $("span#status").text("已开始");
                 $("span#start_or_end").text("结束");
                 var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);

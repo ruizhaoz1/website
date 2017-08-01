@@ -660,14 +660,15 @@ contract LoopringToken is StandardToken {
          });
 
          var nowSecs = new Date().getTime() / 1000;
+          var lastblock = firstblock + totalBlockCount;
+                 $("#head-text").text("Token sale starts from block#" + firstblock + ", ends in block#" + lastblock + ".");
+
          if (isSaleStarted()) {
              if (isSaleEnd()) {
                  $("span#status").text("remaining");
                  $("#memo-div").hide();
              } else {
-                 var lastblock = firstblock + totalBlockCount;
-                 $("#head-text").text("Token sale starts from block#" + firstblock + ", ends in block#" + lastblock + ".");
-
+                
                  $("span#status").text("In Progress");
                  $("span#start_or_end").text("to end");
                  var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);
