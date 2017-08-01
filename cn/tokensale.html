@@ -111,8 +111,8 @@
             <div class="container">
                 <div class="lrc-adress">
                     <h4>如何参与？</h4>
-                    <p>ICO平台：您可以通过我们的合作伙伴 <a href="https://ico.token.im/loopring" target="_blank">imToken</a>， <a href="https://www.ico365.com/pitch/index/289" target="_blank">ICO365</a>，<a href="http://www.icorace.com/product/detail/4" target="_blank">ICORace</a>，<a href="https://tokencapital.io/#!/index/projectInvest/9" target="_blank">TokenCapital</a> 和 <a href="https://aimwise.org/projectdetail.html?id=14" target="_blank">AIMWise</a>，<a href="http://www.123ico.top/project/details?id=2c9faa875d99dc94015d99ebaab50007">BTC123</a> 参与；</p>
-                    <p class="how-to">官网：您可从您的以太坊钱包中直接将ETH转账到我们的众售智能合约地址，转账方式和普通转账一样，但需要将gas设为90000（大约0.002ETH）。</p>
+                    <p>ICO平台：您可以通过我们的合作伙伴 <a href="https://ico.token.im/loopring" target="_blank">imToken</a>， <a href="https://www.ico365.com/pitch/index/289" target="_blank">ICO365</a>，<a href="http://www.icorace.com/product/detail/4" target="_blank">ICORace</a>，<a href="https://tokencapital.io/#!/index/projectInvest/9" target="_blank">TokenCapital</a> 和 <a href="https://aimwise.org/projectdetail.html?id=14" target="_blank">AIMWise</a> 参与；</p>
+                    <p class="how-to">官网：您可从您的以太坊钱包中直接将ETH转账到我们的众售智能合约地址，转账方式和普通转账一样，但需要将gas设为90000。</p>
 
                     <br>
                     <br>
@@ -125,7 +125,7 @@
                     <div class="how-to2">1. 请确认下面显示的地址与<a href="https://etherscan.io/address/lrcsale.eth" target="_blank">https://etherscan.io/address/lrcsale.eth</a>完全一致，否则网站可能已被攻击；</div>
                     <div class="how-to2">2. 切勿从交易所直接提现到智能合约地址 - 您的LRC会被交易所拥有，我们无法为您提供任何支持; </div>
                     <div class="how-to2">3. 请将转账的油费（gas）设为
-                        <bold>90000</bold>（约0.002ETH，没用完的会返回）；最少参与的金额为0.01ETH，不包含油费（gas）； </div>
+                        <bold>90000</bold>（没用完的会返回）；最少参与的金额为0.01ETH，不包含油费（gas）； </div>
                     <div class="how-to2">4. 转账成功后LRC将实时发行到转账的源地址，您可以通过本网页下面的小工具查询； </div>
                     <div class="how-to2">5. 我们拒绝美国和新加坡的居民和公民参与代币众售。如果您属于该类人群，请不要参与！ </div>
                      <div class="how-to2">6. 我们推荐使用MyEtherWallet和imToken参与，并为您提供了 <a href="/assets/mew-tutorial.pdf"  target="_blank">MyEtherWallet教程</a> 和 <a href="/assets/imtoken-tutorial.pdf" target="_blank"> imToken教程 </a>。</div>
@@ -194,7 +194,7 @@
                     <li>众售结束后，如果售得ETH不少于11万但少于12万，未售部分占比52.5%；</li>
                     <li>众售结束后，如果售得ETH不少于12万，未售部分占比50%。</li>
                     <li>售出后剩余LRC，项目团队和社区贡献者按照2:3的比例分配，项目团队锁定4年</li>
-        
+                    <li>在其它公有链（如EOS，量子链）实施路印协议后也会发行LRC代币。如果目标公有链用的数字签名算法和以太坊一致，项目团队将按“众售结束块”中各地址的LRC持有量等比例发行目标公有链上新的LRC代币 — 但会增发5%代币作为对团队的奖励。如果目标公有链的数字签名算法和以太坊不一致，项目团队保留权利采用其它众售策略。</li>
                     <li>众售规则以智能合约代码为最终标准。网页和其它宣传资料为辅助参考。</li>
                 </ul>
             </div>
@@ -609,10 +609,15 @@ contract LoopringToken is StandardToken {
         return totalEth >= 120000 || (currentBlockNumber - firstblock) > totalBlockCount;
     }
 
-    // execute on start.
-    for (var i = 0; i < 3; i++) {
-        setValues();
+    function isSaleStarted() {
+        return firstblock > 0 && currentBlockNumber > firstblock;
     }
+
+    // execute on start.
+    setValues();
+    setTimeout(function(){setValues();}, 1000);
+    setTimeout(function(){setValues();}, 3000);
+    setTimeout(function(){setValues();}, 5000);
 
     $(document).ready(function() {
         setInterval(function() {
@@ -623,7 +628,7 @@ contract LoopringToken is StandardToken {
 
     function setValues() {
         $.get(blockNumberApi, function(data) {
-            console.log("block number : ", data.result);
+            console.log("current block number : ", data.result);
             var num = parseInt(data.result, 16);
             currentBlockNumber = num;
             $("#block-number").text(num);
@@ -661,35 +666,32 @@ contract LoopringToken is StandardToken {
         });
 
         var nowSecs = new Date().getTime() / 1000;
-        if (firstblock == 0) {
-            $("span#status").text("尚未开始");
-            $("span#start_or_end").text("开始");
-            caculateInterval(nowSecs, startTimeSecs);
 
-            $.get(firstBlockApi, function(data) {
-                console.log("firstBlockApi: ", data.result);
-                var num = parseInt(data.result, 16);
-                if (num > 0) {
-                    firstblock = num;
-                    var lastblock = firstblock + totalBlockCount;
-                    $("#head-text").text("众售从以太坊第" + firstblock + "个块开始，到第" + lastblock + "个块结束；");
-                    $("span#status").text("已开始");
-                    $("span#start_or_end").text("结束");
-                    var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);
-                    caculateInterval(nowSecs, nowSecs + remainingSecs);
-                }
-            });
-        } else {
+        if (isSaleStarted()) {
             if (isSaleEnd()) {
                 $("span#status").text("已结束");
                 $("#memo-div").hide();
             } else {
+                var lastblock = firstblock + totalBlockCount;
+                $("#head-text").text("众售从以太坊第" + firstblock + "个块开始，到第" + lastblock + "个块结束；");
+
                 $("span#status").text("已开始");
                 $("span#start_or_end").text("结束");
                 var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);
                 caculateInterval(nowSecs, nowSecs + remainingSecs);
             }
+        } else {
+            $.get(firstBlockApi, function(data) {
+                console.log("firstBlockApi: ", data.result);
+                var num = parseInt(data.result, 16);
+                if (num > 0) {
+                    firstblock = num;
+                }
+            });
 
+            $("span#status").text("尚未开始");
+            $("span#start_or_end").text("开始");
+            caculateInterval(nowSecs, startTimeSecs);
         }
     }
 
