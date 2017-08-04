@@ -111,14 +111,14 @@ time { display: block; font-size: 1rem; font-weight: bold; }
 .progress_bar .sum.end { left: auto; right: 0; }
 .progress_bar .pro-bar { background: hsl(0, 0%, 37%); box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.1) inset; height: 20px; margin-bottom: 12px; margin-top: 50px; position: relative; }
 
-.progress_bar .progress-bar-inner { background-image: -moz-linear-gradient(0deg, rgb(70, 195, 255) 0%, rgb(44, 113, 255) 99%); background-image: -webkit-linear-gradient(0deg, rgb(70, 195, 255) 0%, rgb(44, 113, 255) 99%); background-image: -ms-linear-gradient(0deg, rgb(70, 195, 255) 0%, rgb(44, 113, 255) 99%);
+.progress_bar .progress-bar-inner { background-image: -moz-linear-gradient(0deg, rgb(250, 178, 15) 0%, rgb(242, 48, 48) 99%); background-image: -webkit-linear-gradient(0deg, rgb(250, 178, 15) 0%, rgb(242, 48, 48) 99%); background-image: -ms-linear-gradient(0deg, rgb(250, 178, 15) 0%, rgb(242, 48, 48) 99%);
 display: block; width: 0; height: 100%; position: absolute; top: 0; left: 0; transition: width 1s linear 0s; animation: animate-positive 2s; }
 .progress_bar .progress-bar-inner:before { content: ""; width: 30px; height: 30px; border-radius: 60% 0 50% 50% / 50% 0 60% 50%; background-color: #2d71ff; transform: rotate(135deg); position: absolute; right: -15px; top: -45px; z-index: 1; }
 .progress_bar .progress-bar-inner i:after { content: ""; position: absolute; left: 12.5px; bottom: -38px; width: 1px; height: 30px; background: rgba(255, 255, 255, .5); }
 .progress_bar .progress-bar-inner i { position: relative; z-index: 5; top: -46px; left: 12px; font-size: 12px;font-style: normal; }
 .progress_bar .progress-bar-inner .progress_number { float: right; position: relative; top: -40px; }
 .progress_bar .scale{ position: absolute; z-index: 10; bottom: -7px;  width: 100%; }
-.progress_bar .scale em{ display:inline-block; width: 20%; border-right: 1px solid rgba(255, 255, 255, .2); height: 18px; }
+.progress_bar .scale em{ display:inline-block; width: 8.3333%; border-right: 1px solid rgba(255, 255, 255, .2); height: 18px; }
 .progress_bar .scale em:last-child{ border-right: 0; }
 .progress_bar .scale em:nth-child(5),.progress_bar .scale em:nth-child(6){ position: relative;  }
 .progress_bar .scale em:nth-child(5) i, .progress_bar .scale em:nth-child(6) i{ display: block; width: 30px; position: absolute; z-index: 100;  bottom: -35px!important; text-align: center; font-style: normal; color: rgba(255, 255, 255, 0.5); font-weight: normal; font-size: 12px; line-height: 1; }
