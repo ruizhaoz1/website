@@ -674,7 +674,7 @@ contract LoopringToken is StandardToken {
                 $("span#status").text("已结束");
                 $("#memo-div").hide();
             } else {
-                $("span#status").text("已开始");
+                $("span#status").text("进行中");
                 $("span#start_or_end").text("结束");
                 var remainingSecs = Math.round((totalBlockCount + firstblock - currentBlockNumber) * daySecs / 5082);
                 caculateInterval(nowSecs, nowSecs + remainingSecs);
