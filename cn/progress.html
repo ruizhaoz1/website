@@ -42,7 +42,7 @@
                     <li class="nav-item"><a class="nav-link " href="index.html">路印协议</a></li>
                     <li class="nav-item"><a class="nav-link" href="team.html">项目团队</a></li>
                     <li class="nav-item"><a class="nav-link" href="faq.html">常见问题</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="tokensale.html">代币众售</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="progress.html">项目进展</a></li>
                 </ul>
             </div>
         </div>
@@ -55,35 +55,72 @@
                 <h1 class="text-warning" id="head-started"></h1>
             </div>
         </header>
-  
-        <section class="section">
+        <section class="section bg-gray">
             <div class="container">
-                <div class="lrc-adress">
-                    <h4>众售已结束</h4>
-                    <div>如果您想了解代币众售详情和后续计划，请关注我们官方的微博：<a href="http://weibo.cn/loopringfoundation">http://weibo.cn/loopringfoundation</a>。</div>
-                </div>
-            </div>
-            <div class="container">
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <div class="lrc-search">
-                    <div>
-                        <div class="input-group">
-                            <input class="form-control" id="recipient-address" placeholder="请输入您的以太坊地址">
-                            <div class="input-group-btn">
-                                <button type="" class="btn btn-primary" onclick="checkLrcAmount();">查询LRC余额</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="input-group">
-                        <div class="trailing0">注意：1LRC显示时会带18个0的后缀（1LRC=1,000,000,000,000,000,000）。</div>
-                    </div> -->
-                </div>
+                <header class="section-header">
+                    <i class="icon icon-ico"></i>
+                    <h2>最新消息</h2>
+                </header>
+                <ul>
+                    <li>2017/09/03 - 阿里高级架构师吴晓露全职加入路印基金会。</li>
+                    <li>2017/08/30 - 路印协议代币上线Bter.com, biniance.com 和btc9.com。</li>
+                    <li>2017/08/30 - 推出<a href="https://etherscan.io/address/midterm.lrctoken.eth#code">LRC持有者中期激励计划</a>, <a href="https://etherscan.io/address/longterm.lrctoken.eth#code">LRC持有者长期激励计划</a>, 和 <a href="https://etherscan.io/address/icebox.lrctoken.eth#code">基金会锁仓计划</a> 。</li>
+                    <li>2017/08/20 - 核心开发团队入驻黄浦区Wework。</li>
+                </ul>
             </div>
         </section>
         <section class="section">
-        <br><br><br><br><br><br><br><br><br><br>
+            <div class="container">
+                <header class="section-header">
+                    <i class="icon icon-loopring"></i>
+                    <h2>时间线</h2>
+                </header>
+                <div class="timeline">
+                    <ul>
+                        <li class="in-view">
+                            <div>
+                                <time>2016年10月</time> 我们有了路印协议的概念 ✓</div>
+                        </li>
+                        <li class="in-view">
+                            <div>
+                                <time>2016年12月</time> 完成环路撮合模拟 ✓</div>
+                        </li>
+                        <li class="in-view">
+                            <div>
+                                <time>2017年5月</time> 完成白皮书撰写 ✓</div>
+                        </li>
+                        <li class="in-view">
+                            <div>
+                                <time>2017年6月</time> 核心团队组建完成，对代币发售方式形成共识 ✓</div>
+                        </li>
+                        <li class="in-view">
+                            <div class="todo">
+                                <time>2017年8月1号</time> 计划代币发售开始 ✓</div>
+                        </li>
+                        <li class="in-view">
+                            <div class="todo">
+                                <time>2017年8月30号</time> 计划代币发售结束 ✓</div>
+                        </li>
+                        <li class="in-view">
+                            <div class="todo">
+                                <time>2017年11月</time> 计划智能合约发布</div>
+                        </li>
+                        <li class="in-view">
+                            <div class="todo">
+                                <time>2017年12月</time> 计划路印币LRC上线交易（已经提前完成）✓</div>
+                        </li>
+                        <li class="in-view">
+                            <div class="todo">
+                                <time>2018年2月</time> 计划环路撮合算法开源</div>
+                        </li>
+                        <li class="in-view">
+                            <div class="todo">
+                                <time>2018年4月</time> 支持路印协议的开源钱包上线</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </section>
-         
         <!--
             |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
             | More Header
@@ -112,7 +149,6 @@
     <script src="../assets/js/core.min.js"></script>
     <script src="../assets/js/main.min.js"></script>
     <script type="text/javascript">
-
     function checkLrcAmount() {
         var addr = $("#recipient-address").val().trim();
         console.log("addr: ", addr);
